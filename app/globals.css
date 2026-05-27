@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white text-navy antialiased;
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: #1CB8CE;
+  color: #fff;
+}
