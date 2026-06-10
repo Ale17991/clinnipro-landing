@@ -1,70 +1,62 @@
 import Image from 'next/image'
 import { site, whatsappUrl } from '@/lib/site'
 
-const columns = [
-  {
-    title: 'Produto',
-    links: [
-      { label: 'Recursos', href: '#recursos' },
-      { label: 'Como funciona', href: '#como-funciona' },
-      { label: 'Agendamento online', href: '#recursos' },
-    ],
-  },
-  {
-    title: 'Acesso',
-    links: [
-      { label: 'Entrar', href: site.appUrl },
-      { label: 'Agendar demonstração', href: whatsappUrl },
-      { label: 'Falar no WhatsApp', href: whatsappUrl },
-    ],
-  },
+const links: { label: string; href: string; external?: boolean }[][] = [
+  [
+    { label: 'Sistema', href: '#sistema' },
+    { label: 'Prontuário', href: '#prontuario' },
+    { label: 'Financeiro', href: '#financeiro' },
+    { label: 'Agendamento online', href: '#agendamento' },
+  ],
+  [
+    { label: 'Segurança', href: '#seguranca' },
+    { label: 'Perguntas', href: '#faq' },
+  ],
+  [
+    { label: 'Demonstração', href: '/demonstracao' },
+    { label: 'Entrar', href: site.appUrl, external: true },
+    { label: 'WhatsApp', href: whatsappUrl, external: true },
+  ],
 ]
 
 export function Footer() {
   return (
-    <footer className="bg-navy-900 text-white/70">
-      <div className="mx-auto max-w-content px-5 py-16 sm:px-8">
-        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+    <footer className="border-t border-ink/5 bg-white">
+      <div className="mx-auto max-w-content px-6 py-20 sm:px-10">
+        <div className="grid gap-12 md:grid-cols-[1.6fr_1fr_1fr_1fr]">
           <div>
             <Image
-              src="/logo-clinnipro.png"
+              src="/logo-clinnipro-dark.png"
               alt="clinni pro"
               width={150}
               height={42}
-              className="h-8 w-auto"
+              className="h-7 w-auto"
             />
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/55">
-              Sistema de gestão para clínicas e consultórios. Agenda, prontuário,
-              financeiro e agendamento online em um só lugar.
+            <p className="mt-5 max-w-xs text-[14px] leading-relaxed text-ink-500">
+              Sistema brasileiro para clínicas e consultórios.
             </p>
           </div>
-          {columns.map((col) => (
-            <div key={col.title}>
-              <h4 className="text-sm font-semibold uppercase tracking-wider text-white">
-                {col.title}
-              </h4>
-              <ul className="mt-4 space-y-3">
-                {col.links.map((l) => (
-                  <li key={l.label}>
-                    <a
-                      href={l.href}
-                      className="text-sm text-white/60 transition hover:text-teal"
-                    >
-                      {l.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {links.map((col, i) => (
+            <ul key={i} className="space-y-3">
+              {col.map((l) => (
+                <li key={l.label}>
+                  <a
+                    href={l.href}
+                    target={l.external ? '_blank' : undefined}
+                    rel={l.external ? 'noopener noreferrer' : undefined}
+                    className="text-[14px] text-ink-500 transition hover:text-ink"
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col gap-2 border-t border-white/10 pt-6 text-sm text-white/45 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-16 flex flex-col gap-2 border-t border-ink/5 pt-6 text-[12px] text-ink-500 sm:flex-row sm:items-center sm:justify-between">
           <span>{site.domain}</span>
-          <span>
-            © {new Date().getFullYear()} clinni pro. Todos os direitos
-            reservados.
-          </span>
+          <span>© {new Date().getFullYear()} clinni pro</span>
         </div>
       </div>
     </footer>

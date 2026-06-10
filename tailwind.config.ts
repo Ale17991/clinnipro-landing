@@ -1,32 +1,42 @@
 import type { Config } from 'tailwindcss'
 
-// Paleta alinhada ao app real (src/app/globals.css — design 016).
 const config: Config = {
   content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
+        // Paleta restrita — fidelidade ao app real, sem excessos.
+        ink: {
+          DEFAULT: '#0B1B26', // texto principal, quase preto azulado
+          900: '#0A1620',
+          700: '#1F3645',
+          500: '#516676',
+        },
         navy: {
-          DEFAULT: '#0E3C5B', // azul institucional (sidebar / texto forte)
+          DEFAULT: '#0E3C5B',
           deep: '#0A2E44',
           900: '#082338',
-          700: '#1C4F71', // --primary do app
+          700: '#1C4F71',
         },
         primary: '#1C4F71',
         teal: {
-          DEFAULT: '#1CABB0', // verde principal do designer (--success)
-          dark: '#126F72', // --success-strong
-          light: '#CBE1E1', // --success-bg
+          DEFAULT: '#1CABB0',
+          dark: '#126F72',
+          light: '#CBE1E1',
         },
         sky: {
-          DEFAULT: '#569AC6', // --info
-          light: '#CBE6F8', // --info-bg / sidebar-active-text
+          DEFAULT: '#569AC6',
+          light: '#CBE6F8',
         },
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-serif)', 'Georgia', 'serif'],
       },
-      maxWidth: { content: '1160px' },
+      maxWidth: { content: '1200px', prose: '720px' },
+      letterSpacing: {
+        'tightest-2': '-0.045em',
+      },
       keyframes: {
         'fade-up': {
           '0%': { opacity: '0', transform: 'translateY(16px)' },

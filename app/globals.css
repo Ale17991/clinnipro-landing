@@ -7,11 +7,20 @@ html {
 }
 
 body {
-  @apply bg-white text-navy antialiased;
+  @apply bg-white text-ink antialiased;
   font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background: #1CB8CE;
+  background: #0E3C5B;
   color: #fff;
+}
+
+/* Tipografia premium: títulos com tracking apertado */
+.display {
+  font-feature-settings: 'ss01', 'cv11';
+  letter-spacing: -0.035em;
 }

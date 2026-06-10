@@ -8,3 +8,11 @@
 .vercel
 next-env.d.ts
 /.idea
+
+# Documentação interna e material de negócio — NÃO vai pra produção.
+/docs
+/tsconfig.tsbuildinfo
+
+# Claude Code — arquivos locais/runtime
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
