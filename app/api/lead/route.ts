@@ -90,34 +90,87 @@ export async function POST(req: NextRequest) {
     )
   }
 
-  // 2) Aciona a Edge Function que cria o lead no GHL.
-  //    Falha aqui NÃO derruba a request — o lead já está salvo.
-  //    A própria Edge Function pode ser reprocessada a partir do Supabase.
-  const ghlFnUrl = process.env.GHL_EDGE_FUNCTION_URL
-  if (ghlFnUrl) {
-    const fnKey = process.env.GHL_EDGE_FUNCTION_KEY
+  // 2) Cria o contato no Go High Level (API v2 / LeadConnector).
+  //    Best-effort: falha aqui NÃO derruba a request — o lead já está salvo no
+  //    Supabase e fica com ghl_status='failed' para reprocessar depois. Só roda
+  //    se as credenciais existirem (token de Private Integration + locationId).
+  const ghlToken = process.env.GHL_API_TOKEN
+  const ghlLocationId = process.env.GHL_LOCATION_ID
+
+  if (ghlToken && ghlLocationId) {
+    // "Dra. Helena Martins" -> firstName "Dra." ... melhor: primeiro nome + resto.
+    const nameParts = data.contactName.trim().split(/\s+/)
+    const firstName = nameParts[0]
+    const lastName = nameParts.slice(1).join(' ') || undefined
+
+    // Dados estruturados como tags — prontos para automações no GHL,
+    // sem precisar de custom fields configurados de antemão.
+    const tags = [
+      'landing',
+      `plano: ${data.intendedPlan}`,
+      `tipo: ${data.clinicType}`,
+      `porte: ${data.professionals}`,
+    ]
+    if (data.utm?.campaign) tags.push(`campanha: ${data.utm.campaign}`)
+
     try {
-      const fnRes = await fetch(ghlFnUrl, {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json',
-          ...(fnKey ? { authorization: `Bearer ${fnKey}` } : {}),
+      const ghlRes = await fetch(
+        'https://services.leadconnectorhq.com/contacts/',
+        {
+          method: 'POST',
+          headers: {
+            authorization: `Bearer ${ghlToken}`,
+            version: '2021-07-28',
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify({
+            locationId: ghlLocationId,
+            firstName,
+            lastName,
+            email: data.email,
+            phone: data.phone,
+            companyName: data.clinicName,
+            source: data.utm?.source ?? data.source ?? 'landing',
+            tags,
+          }),
+          // Não trava a UX: se o GHL não responder em 8s, soltamos.
+          signal: AbortSignal.timeout(8000),
         },
-        body: JSON.stringify({ leadId: lead.id, ...data }),
-        // Não trava a UX: se o GHL não responder em 8s, soltamos.
-        signal: AbortSignal.timeout(8000),
-      })
-      if (!fnRes.ok) {
-        console.warn('[api/lead] edge function non-2xx', {
-          status: fnRes.status,
+      )
+
+      if (ghlRes.ok) {
+        const json = (await ghlRes.json().catch(() => null)) as
+          | { contact?: { id?: string } }
+          | null
+        await supabase
+          .from('leads')
+          .update({
+            ghl_status: 'sent',
+            ghl_contact_id: json?.contact?.id ?? null,
+            ghl_synced_at: new Date().toISOString(),
+          })
+          .eq('id', lead.id)
+      } else {
+        const errText = await ghlRes.text().catch(() => '')
+        console.warn('[api/lead] GHL non-2xx', {
+          status: ghlRes.status,
           leadId: lead.id,
         })
+        await supabase
+          .from('leads')
+          .update({
+            ghl_status: 'failed',
+            ghl_error: `HTTP ${ghlRes.status} ${errText}`.slice(0, 500),
+          })
+          .eq('id', lead.id)
       }
     } catch (e) {
-      console.warn('[api/lead] edge function dispatch failed', {
-        leadId: lead.id,
-        message: e instanceof Error ? e.message : String(e),
-      })
+      const message = e instanceof Error ? e.message : String(e)
+      console.warn('[api/lead] GHL dispatch failed', { leadId: lead.id, message })
+      await supabase
+        .from('leads')
+        .update({ ghl_status: 'failed', ghl_error: message.slice(0, 500) })
+        .eq('id', lead.id)
     }
   }
 
