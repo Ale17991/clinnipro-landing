@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { LeadForm } from './LeadForm'
+import { GhlLeadForm } from './GhlLeadForm'
 import { site } from '@/lib/site'
 
 export const metadata: Metadata = {
@@ -76,11 +75,7 @@ export default function DemoPage() {
         </section>
 
         <section>
-          <div className="rounded-2xl border border-ink/10 bg-[#FAFAFB] p-6 sm:p-10">
-            <Suspense fallback={<div className="h-96" />}>
-              <LeadForm />
-            </Suspense>
-          </div>
+          <GhlLeadForm />
         </section>
       </main>
 
