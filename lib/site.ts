@@ -71,43 +71,50 @@ export const compromissos = [
   },
 ]
 
-// Profissão-neutro: o núcleo é o mesmo para todos; cada especialidade liga
-// só os módulos que usa. Reflete os tipos de profissional do sistema real.
+// Profissão-neutro e modular: o núcleo serve qualquer clínica e os módulos
+// abaixo entram conforme a rotina — descritos pelo que FAZEM, sem amarrar
+// "módulo X só serve para profissional Y". O destaque é o módulo sob medida.
 export const professions =
   'Médicos · Dentistas · Fisioterapeutas · Psicólogos · Nutricionistas · Fonoaudiólogos · Terapeutas ocupacionais · Enfermeiros'
 
-export const professionModules = [
+export const specialtyModules = [
   {
-    pro: 'Médicos',
-    icon: 'stethoscope',
-    desc: 'Prescrição digital Memed inclusa e faturamento TISS para convênios.',
+    title: 'Prescrição digital',
+    icon: 'clipboard',
+    desc: 'Receitas e atestados assinados pela Memed, prontos para quem prescreve.',
   },
   {
-    pro: 'Dentistas',
-    icon: 'tooth',
-    desc: 'Prontuário clínico, repasse por procedimento e agenda compartilhada.',
+    title: 'Portal do paciente',
+    icon: 'users',
+    desc: 'O paciente acompanha sua evolução entre consultas, com métricas e planos.',
   },
   {
-    pro: 'Nutricionistas',
-    icon: 'heart',
-    desc: 'Planos alimentares com refeições e macros — o paciente acompanha pelo portal.',
-  },
-  {
-    pro: 'Personal e fisioterapeutas',
+    title: 'Planos de treino',
     icon: 'cardiogram',
-    desc: 'Planos de treino com séries, carga e descanso, versionados a cada evolução.',
+    desc: 'Séries, carga e descanso, versionados a cada nova avaliação.',
   },
   {
-    pro: 'Endocrinologistas',
+    title: 'Planos alimentares',
+    icon: 'heart',
+    desc: 'Refeições e macros organizados, visíveis ao paciente no portal.',
+  },
+  {
+    title: 'Evolução de métricas',
     icon: 'trending',
-    desc: 'Portal com evolução de métricas: glicemia, HbA1c, peso e perfil lipídico.',
+    desc: 'Glicemia, HbA1c, peso e o que mais a clínica quiser acompanhar no tempo.',
   },
   {
-    pro: 'Psicólogos e terapeutas',
-    icon: 'brain',
-    desc: 'Prontuário em timeline única, focado na evolução do acompanhamento.',
+    title: 'Faturamento TISS',
+    icon: 'receipt',
+    desc: 'Guias e lotes para convênios, no padrão da ANS e assinados em ICP-Brasil.',
   },
 ] as const
+
+// Card de destaque: módulo personalizado.
+export const customModule = {
+  title: 'Módulo sob medida',
+  desc: 'Sua especialidade tem um fluxo que nenhum sistema atende? A gente desenha e desenvolve o módulo para ele — sem você trocar de plataforma.',
+}
 
 // Planos — preço por profissional de saúde/mês.
 export const pricingNote =
@@ -241,7 +248,7 @@ export const faqs = [
   },
   {
     q: 'Atende a minha especialidade?',
-    a: 'A clinni pro é profissão-neutro: o núcleo (agenda, prontuário, financeiro) serve qualquer clínica e cada profissional ativa os módulos da sua área — prescrição Memed para médicos, planos de dieta para nutrição, treino para fisio e personal, portal de métricas para endócrino.',
+    a: 'Sim. O núcleo — agenda, prontuário, prescrição e financeiro — serve qualquer clínica, e você ativa só os módulos que usa. Se a sua especialidade precisa de um fluxo que nenhum sistema tem, desenvolvemos um módulo sob medida sem você trocar de plataforma.',
   },
   {
     q: 'Como é o repasse no fim do mês?',

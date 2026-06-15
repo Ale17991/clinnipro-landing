@@ -52,6 +52,16 @@ export function Hero() {
               Conhecer o sistema
             </a>
           </div>
+
+          {/* Selos de confiança — convenção do nicho, sem números inflados */}
+          <ul className="mt-9 flex flex-wrap items-center justify-center gap-x-6 gap-y-2.5 text-[12.5px] text-ink-500">
+            {trustBadges.map((b) => (
+              <li key={b.label} className="flex items-center gap-1.5">
+                <Icon name={b.icon} className="h-3.5 w-3.5 text-teal" />
+                {b.label}
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/* Mockup grande e limpo, abaixo */}
@@ -62,6 +72,12 @@ export function Hero() {
     </section>
   )
 }
+
+const trustBadges = [
+  { label: 'Conforme a LGPD', icon: 'shield' },
+  { label: 'Dados hospedados no Brasil', icon: 'database' },
+  { label: 'Teste sem cartão de crédito', icon: 'check' },
+]
 
 const opMenu = [
   { label: 'Agenda', icon: 'calendar', active: true },
