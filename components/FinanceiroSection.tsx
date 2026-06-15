@@ -19,7 +19,7 @@ export function FinanceiroSection() {
                 ['Dr. Rafael Costa', '31 atendimentos', 'R$ 12.940'],
                 ['Dra. Carla Andrade', '24 atendimentos', 'R$ 9.680'],
               ].map(([who, n, v]) => (
-                <div key={who} className="flex items-center justify-between px-7 py-4">
+                <div key={who} className="flex items-center justify-between px-7 py-4 transition-colors hover:bg-ink/[0.02]">
                   <div>
                     <p className="text-[13px] font-medium text-ink">{who}</p>
                     <p className="text-[11px] text-ink-500">{n}</p>
@@ -34,7 +34,9 @@ export function FinanceiroSection() {
                 {[40, 55, 48, 70, 60, 80, 65, 85, 72, 95].map((h, i) => (
                   <div
                     key={i}
-                    className={`flex-1 rounded-t-sm ${i === 9 ? 'bg-teal' : 'bg-ink/10'}`}
+                    className={`flex-1 rounded-t-sm transition-colors ${
+                      i === 9 ? 'bg-teal' : 'bg-ink/10 hover:bg-ink/25'
+                    }`}
                     style={{ height: `${h}%` }}
                   />
                 ))}

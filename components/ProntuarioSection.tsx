@@ -54,16 +54,16 @@ export function ProntuarioSection() {
               <ol className="relative space-y-5 pl-6">
                 <span aria-hidden className="absolute left-[5px] top-2 h-[calc(100%-1.5rem)] w-px bg-ink/10" />
                 {timeline.map((t, i) => (
-                  <li key={i} className="relative">
+                  <li key={i} className="group relative">
                     <span
-                      className={`absolute -left-6 top-1 h-2.5 w-2.5 rounded-full ring-4 ring-white ${
-                        i === 0 ? 'bg-teal' : 'bg-ink/20'
+                      className={`absolute -left-6 top-1 h-2.5 w-2.5 rounded-full ring-4 ring-white transition-transform duration-200 group-hover:scale-125 ${
+                        i === 0 ? 'bg-teal' : 'bg-ink/20 group-hover:bg-teal'
                       }`}
                     />
                     <p className="text-[10.5px] font-medium uppercase tracking-[0.14em] text-ink-500">
                       {t.date}
                     </p>
-                    <p className="mt-0.5 text-[13.5px] font-medium text-ink">
+                    <p className="mt-0.5 text-[13.5px] font-medium text-ink transition-colors group-hover:text-teal-dark">
                       {t.title}
                     </p>
                     <p className="text-[12px] text-ink-500">{t.sub}</p>
