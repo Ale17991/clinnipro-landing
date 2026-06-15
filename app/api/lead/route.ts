@@ -35,27 +35,49 @@ export async function POST(req: NextRequest) {
   const supabase = getSupabaseAdmin()
 
   // 1) Persiste o lead.
-  const { data: lead, error } = await supabase
+  const baseRow = {
+    clinic_name: data.clinicName,
+    contact_name: data.contactName,
+    clinic_type: data.clinicType,
+    phone: data.phone,
+    email: data.email,
+    professionals: data.professionals,
+    source: data.source ?? 'landing',
+    utm_source: data.utm?.source ?? null,
+    utm_medium: data.utm?.medium ?? null,
+    utm_campaign: data.utm?.campaign ?? null,
+    utm_term: data.utm?.term ?? null,
+    utm_content: data.utm?.content ?? null,
+    ip,
+    user_agent: userAgent,
+    referer,
+  }
+
+  // A coluna intended_plan vem da migration 0002. Tentamos inserir com ela;
+  // se o banco ainda não a tiver, reinserimos sem ela — o plano segue para o
+  // GHL pelo payload da Edge Function de qualquer forma. Assim o deploy nunca
+  // quebra a captura de leads, mesmo antes da migration ser aplicada.
+  let result = await supabase
     .from('leads')
-    .insert({
-      clinic_name: data.clinicName,
-      contact_name: data.contactName,
-      clinic_type: data.clinicType,
-      phone: data.phone,
-      email: data.email,
-      professionals: data.professionals,
-      source: data.source ?? 'landing',
-      utm_source: data.utm?.source ?? null,
-      utm_medium: data.utm?.medium ?? null,
-      utm_campaign: data.utm?.campaign ?? null,
-      utm_term: data.utm?.term ?? null,
-      utm_content: data.utm?.content ?? null,
-      ip,
-      user_agent: userAgent,
-      referer,
-    })
+    .insert({ ...baseRow, intended_plan: data.intendedPlan })
     .select('id')
     .single()
+
+  if (
+    result.error &&
+    (result.error.code === '42703' || result.error.code === 'PGRST204')
+  ) {
+    console.warn(
+      '[api/lead] coluna intended_plan ausente — inserindo sem ela. Aplique a migration 0002.',
+    )
+    result = await supabase
+      .from('leads')
+      .insert(baseRow)
+      .select('id')
+      .single()
+  }
+
+  const { data: lead, error } = result
 
   if (error) {
     console.error('[api/lead] supabase insert failed', {

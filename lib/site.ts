@@ -19,7 +19,7 @@ export const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURICom
 export const nav = [
   { label: 'Sistema', href: '#sistema' },
   { label: 'Prontuário', href: '#prontuario' },
-  { label: 'Financeiro', href: '#financeiro' },
+  { label: 'Especialidades', href: '#especialidades' },
   { label: 'Planos', href: '#planos' },
 ]
 
@@ -71,6 +71,44 @@ export const compromissos = [
   },
 ]
 
+// Profissão-neutro: o núcleo é o mesmo para todos; cada especialidade liga
+// só os módulos que usa. Reflete os tipos de profissional do sistema real.
+export const professions =
+  'Médicos · Dentistas · Fisioterapeutas · Psicólogos · Nutricionistas · Fonoaudiólogos · Terapeutas ocupacionais · Enfermeiros'
+
+export const professionModules = [
+  {
+    pro: 'Médicos',
+    icon: 'stethoscope',
+    desc: 'Prescrição digital Memed inclusa e faturamento TISS para convênios.',
+  },
+  {
+    pro: 'Dentistas',
+    icon: 'tooth',
+    desc: 'Prontuário clínico, repasse por procedimento e agenda compartilhada.',
+  },
+  {
+    pro: 'Nutricionistas',
+    icon: 'heart',
+    desc: 'Planos alimentares com refeições e macros — o paciente acompanha pelo portal.',
+  },
+  {
+    pro: 'Personal e fisioterapeutas',
+    icon: 'cardiogram',
+    desc: 'Planos de treino com séries, carga e descanso, versionados a cada evolução.',
+  },
+  {
+    pro: 'Endocrinologistas',
+    icon: 'trending',
+    desc: 'Portal com evolução de métricas: glicemia, HbA1c, peso e perfil lipídico.',
+  },
+  {
+    pro: 'Psicólogos e terapeutas',
+    icon: 'brain',
+    desc: 'Prontuário em timeline única, focado na evolução do acompanhamento.',
+  },
+] as const
+
 // Planos — preço por profissional de saúde/mês.
 export const pricingNote =
   'Cobrança por profissional de saúde · recepção e admin gratuitos · sem fidelidade no mensal.'
@@ -114,8 +152,8 @@ export const plans = [
     ],
   },
   {
-    id: 'enterprise',
-    name: 'Enterprise',
+    id: 'clinica',
+    name: 'Clínica',
     price: 259,
     tagline: 'Multiespecialidade / rede',
     featured: false,
@@ -144,14 +182,14 @@ export const addons = [
   },
   {
     title: 'Portal do Paciente',
-    desc: 'Diferencial de retenção. Cobrança por clínica.',
+    desc: 'Login por CPF, evolução de métricas (glicemia, HbA1c, peso) e acompanhamento entre consultas. Diferencial de retenção.',
     price: 'R$ 79',
     unit: '/clínica',
     icon: 'users',
   },
   {
     title: 'Telemedicina',
-    desc: 'Pacote ou por uso, no padrão de mercado.',
+    desc: 'Teleconsulta integrada à agenda e ao prontuário. Em breve.',
     price: 'R$ 39',
     unit: '/prof',
     icon: 'cardiogram',
@@ -173,6 +211,8 @@ export const clinicTypes = [
   'Odontologia',
   'Psicologia e terapia',
   'Fisioterapia e reabilitação',
+  'Nutrição',
+  'Endocrinologia / metabólica',
   'Outro',
 ] as const
 
@@ -184,11 +224,24 @@ export const clinicSizes = [
   'Mais de 20',
 ] as const
 
+// Opções do select "plano pretendido" no formulário de demonstração.
+// Acompanha os planos reais (ver `plans`) + "Ainda não sei".
+export const planOptions = [
+  'Essencial',
+  'Pro',
+  'Clínica',
+  'Ainda não sei',
+] as const
+
 // FAQ — curto e direto.
 export const faqs = [
   {
     q: 'Funciona para quem atende sozinho?',
     a: 'Sim. Médicos solo usam pelo celular e tablet — sem recepção e sem ligar para confirmar consulta.',
+  },
+  {
+    q: 'Atende a minha especialidade?',
+    a: 'A clinni pro é profissão-neutro: o núcleo (agenda, prontuário, financeiro) serve qualquer clínica e cada profissional ativa os módulos da sua área — prescrição Memed para médicos, planos de dieta para nutrição, treino para fisio e personal, portal de métricas para endócrino.',
   },
   {
     q: 'Como é o repasse no fim do mês?',

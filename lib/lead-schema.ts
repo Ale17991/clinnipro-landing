@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { clinicSizes, clinicTypes } from './site'
+import { clinicSizes, clinicTypes, planOptions } from './site'
 
 // Schema compartilhado entre client (form) e server (API route).
 export const leadSchema = z.object({
@@ -30,6 +30,9 @@ export const leadSchema = z.object({
     .max(160, 'E-mail muito longo'),
   professionals: z.enum(clinicSizes, {
     message: 'Informe quantos profissionais atendem',
+  }),
+  intendedPlan: z.enum(planOptions, {
+    message: 'Selecione o plano pretendido',
   }),
   // Campos opcionais para tracking/atribuição
   source: z.string().max(80).optional(),

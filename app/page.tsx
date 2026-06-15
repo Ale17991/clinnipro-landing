@@ -4,6 +4,7 @@ import { ProductTour } from '@/components/ProductTour'
 import { ProntuarioSection } from '@/components/ProntuarioSection'
 import { FinanceiroSection } from '@/components/FinanceiroSection'
 import { PublicBookingSection } from '@/components/PublicBookingSection'
+import { SpecialtiesSection } from '@/components/SpecialtiesSection'
 import { SecuritySection } from '@/components/SecuritySection'
 import { PricingSection } from '@/components/PricingSection'
 import { FAQSection } from '@/components/FAQSection'
@@ -20,6 +21,7 @@ export default function Home() {
         <ProntuarioSection />
         <FinanceiroSection />
         <PublicBookingSection />
+        <SpecialtiesSection />
         <SecuritySection />
         <PricingSection />
         <FAQSection />

@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { leadSchema, type LeadInput } from '@/lib/lead-schema'
-import { clinicSizes, clinicTypes } from '@/lib/site'
+import { clinicSizes, clinicTypes, planOptions } from '@/lib/site'
 
 type FieldErrors = Partial<Record<keyof LeadInput, string>>
 
@@ -14,6 +14,7 @@ const initial = {
   phone: '',
   email: '',
   professionals: '',
+  intendedPlan: '',
 }
 
 export function LeadForm() {
@@ -167,6 +168,15 @@ export function LeadForm() {
         onChange={(v) => update('professionals', v)}
         error={errors.professionals}
         options={clinicSizes}
+      />
+
+      <Select
+        label="Plano pretendido"
+        id="intendedPlan"
+        value={values.intendedPlan}
+        onChange={(v) => update('intendedPlan', v)}
+        error={errors.intendedPlan}
+        options={planOptions}
       />
 
       <button
