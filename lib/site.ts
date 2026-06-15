@@ -240,6 +240,12 @@ export const planOptions = [
   'Ainda não sei',
 ] as const
 
+// Aviso LGPD exibido abaixo do botão de envio do formulário.
+// >>> TROCAR: e-mail real para pedidos de titular (acesso/correção/exclusão).
+export const privacyEmail = 'privacidade@clinnipro.com.br'
+export const lgpdNotice =
+  'Ao enviar, você concorda que a clinni pro use os dados informados (nome, e-mail e telefone) para entrar em contato sobre a demonstração, conforme a LGPD (Lei nº 13.709/2018). Não vendemos nem compartilhamos seus dados para publicidade.'
+
 // FAQ — curto e direto.
 export const faqs = [
   {

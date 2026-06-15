@@ -3,7 +3,13 @@
 import { useState, type FormEvent } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { leadSchema, type LeadInput } from '@/lib/lead-schema'
-import { clinicSizes, clinicTypes, planOptions } from '@/lib/site'
+import {
+  clinicSizes,
+  clinicTypes,
+  planOptions,
+  lgpdNotice,
+  privacyEmail,
+} from '@/lib/site'
 
 type FieldErrors = Partial<Record<keyof LeadInput, string>>
 
@@ -191,6 +197,17 @@ export function LeadForm() {
           </span>
         )}
       </button>
+
+      <p className="text-center text-[11.5px] leading-relaxed text-ink-500">
+        {lgpdNotice} Para acesso, correção ou exclusão, escreva para{' '}
+        <a
+          href={`mailto:${privacyEmail}`}
+          className="underline transition hover:text-ink"
+        >
+          {privacyEmail}
+        </a>
+        .
+      </p>
 
       {serverError && (
         <p className="text-center text-[13px] text-rose-700" role="alert">
