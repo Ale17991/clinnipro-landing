@@ -1,6 +1,6 @@
 // Configuração e conteúdo da landing da clinni pro.
-// >>> TROCAR: número real do WhatsApp (DDI+DDD+numero, só dígitos).
-export const WHATSAPP_NUMBER = '5500000000000'
+// WhatsApp da clinni pro (DDI 55 + DDD 27 + número, só dígitos).
+export const WHATSAPP_NUMBER = '5527988793222'
 
 export const site = {
   name: 'clinni pro',
@@ -8,7 +8,7 @@ export const site = {
   url: 'https://clinnipro.com.br',
   appUrl: 'https://app.clinnipro.com.br',
   description:
-    'Sistema de gestão para clínicas e consultórios. Agenda, prontuário, financeiro e agendamento online em um só lugar.',
+    'Mais que um sistema de gestão para clínicas: um parceiro que implanta, se adapta e cria as ferramentas que a sua clínica precisa. Agenda, prontuário, financeiro e agendamento online num só lugar.',
 }
 
 const WHATSAPP_MESSAGE = 'Olá! Quero conhecer a clinni pro.'
@@ -17,11 +17,37 @@ export const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURICom
 )}`
 
 export const nav = [
+  { label: 'Parceria', href: '#parceria' },
   { label: 'Sistema', href: '#sistema' },
-  { label: 'Prontuário', href: '#prontuario' },
-  { label: 'Especialidades', href: '#especialidades' },
+  { label: 'Recursos', href: '#recursos' },
+  { label: 'Sob medida', href: '#especialidades' },
   { label: 'Planos', href: '#planos' },
 ]
+
+// Posicionamento "mais que um sistema, um parceiro" — os 4 pilares vêm da
+// campanha de marca (ver C:\My project\clinni-instagram\build_series_v2.py).
+export const partnerPillars = [
+  {
+    title: 'Implantação assistida',
+    desc: 'Migramos seus dados e deixamos tudo pronto pra usar — você não começa do zero.',
+    icon: 'database',
+  },
+  {
+    title: 'Do seu jeito',
+    desc: 'Fluxos e relatórios sob medida pra rotina da sua clínica, não um molde genérico.',
+    icon: 'settings',
+  },
+  {
+    title: 'Suporte que resolve',
+    desc: 'Gente de verdade pra te ajudar quando precisar — sem fila de robô.',
+    icon: 'users',
+  },
+  {
+    title: 'Crescemos juntos',
+    desc: 'O que faltar, a gente desenvolve com você. A ferramenta acompanha a clínica.',
+    icon: 'trending',
+  },
+] as const
 
 // 4 módulos centrais (cortado de 8 para 4 — foco).
 export const modules = [
@@ -107,6 +133,119 @@ export const specialtyModules = [
     title: 'Faturamento TISS',
     icon: 'receipt',
     desc: 'Guias e lotes para convênios, no padrão da ANS e assinados em ICP-Brasil.',
+  },
+] as const
+
+// Amplitude real do produto — agrupada por área. Existe MUITO mais do que a
+// agenda; esta lista mostra o que já está pronto hoje (ver inventário do app).
+export const capabilityGroups = [
+  {
+    title: 'Operação',
+    icon: 'calendar',
+    items: [
+      'Agenda dia, semana e mês',
+      'Atendimentos com vários procedimentos',
+      'Bloqueio de horários e encaixes',
+      'Tarefas e notificações',
+      'Lembretes por e-mail e WhatsApp',
+      'Agendamento online 24h',
+    ],
+  },
+  {
+    title: 'Prontuário',
+    icon: 'clipboard',
+    items: [
+      'Timeline única do paciente',
+      'Anamnese com modelos reutilizáveis',
+      'Sinais vitais, alergias e diagnósticos (CID-10)',
+      'Plano de tratamento',
+      'Prescrição digital assinada (Memed)',
+      'Documentos e prontuário em PDF',
+    ],
+  },
+  {
+    title: 'Financeiro',
+    icon: 'wallet',
+    items: [
+      'Contas a pagar e a receber',
+      'Fluxo de caixa projetado',
+      'Repasse: comissionado, fixo ou liberal',
+      'Honorários de equipe por procedimento',
+      'Impostos e parcelamento',
+    ],
+  },
+  {
+    title: 'Convênios',
+    icon: 'receipt',
+    items: [
+      'Tabela de preço por convênio',
+      'Faturamento TISS — guias, lotes e glosas',
+      'XML assinado em ICP-Brasil',
+      'Recebíveis por convênio',
+    ],
+  },
+  {
+    title: 'Análise',
+    icon: 'trending',
+    items: [
+      'Dashboard financeiro',
+      'Relatórios por convênio, profissional e mês',
+      'Exportação em PDF e Excel',
+      'Trilha de auditoria',
+    ],
+  },
+  {
+    title: 'Paciente',
+    icon: 'users',
+    items: [
+      'Portal do paciente (login por CPF)',
+      'Evolução de métricas: glicemia, HbA1c, peso',
+      'Planos de treino e alimentares',
+      'Orientações e cuidados pós-consulta',
+    ],
+  },
+  {
+    title: 'Integrações',
+    icon: 'link',
+    items: [
+      'GoHighLevel (CRM)',
+      'Google Agenda (bidirecional)',
+      'Webhooks para qualquer sistema',
+      'E-mail transacional',
+    ],
+  },
+  {
+    title: 'Segurança',
+    icon: 'shield',
+    items: [
+      'LGPD na fundação',
+      'Dados isolados por clínica e cifrados',
+      'Trilha de auditoria imutável',
+      'Servidores no Brasil',
+    ],
+  },
+] as const
+
+// Provas concretas de "fazemos o que falta" — módulos que nasceram de uma
+// necessidade real de clínica e hoje rodam no produto.
+export const customProof = [
+  {
+    title: 'Odontograma interativo',
+    tag: 'Odontologia',
+    desc: 'Carta dentária clicável no padrão FDI, status por face do dente e histórico. Feito porque a odontologia precisava.',
+    icon: 'tooth',
+  },
+  {
+    title: 'Portal do paciente endócrino',
+    tag: 'Endocrinologia',
+    desc: 'O paciente acompanha glicemia, HbA1c e peso entre consultas, com gráficos de evolução.',
+    icon: 'trending',
+  },
+  {
+    title: 'Faturamento TISS',
+    tag: 'Convênios',
+    desc: 'Guias e lotes no padrão ANS, assinados em ICP-Brasil. Substitui o faturista.',
+    icon: 'receipt',
   },
 ] as const
 

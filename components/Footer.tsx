@@ -33,7 +33,8 @@ export function Footer() {
               className="h-7 w-auto"
             />
             <p className="mt-5 max-w-xs text-[14px] leading-relaxed text-ink-500">
-              Sistema brasileiro para clínicas e consultórios.
+              Mais que um sistema: o parceiro da sua clínica. Feito no Brasil,
+              para clínicas e consultórios.
             </p>
           </div>
           {links.map((col, i) => (

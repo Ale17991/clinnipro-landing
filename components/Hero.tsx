@@ -18,23 +18,25 @@ export function Hero() {
       <div className="relative mx-auto max-w-content px-6 pb-24 pt-24 sm:px-10 sm:pt-32 lg:pb-32 lg:pt-40">
         {/* Coluna única, centrado, muito espaço */}
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-[13px] font-medium uppercase tracking-[0.18em] text-ink-500">
-            Sistema de gestão para clínicas
-          </p>
+          <a
+            href="#parceria"
+            className="inline-flex items-center gap-2 rounded-full border border-teal/30 bg-teal/[0.06] px-4 py-1.5 text-[12.5px] font-medium text-teal-dark transition hover:bg-teal/10"
+          >
+            <Icon name="sparkle" className="h-3.5 w-3.5" />
+            Cada clínica tem uma conta sob medida
+          </a>
 
-          <h1 className="display mt-7 text-[2.6rem] font-medium leading-[1.05] text-ink sm:text-[3.6rem] md:text-[4.2rem]">
-            A sua clínica,{' '}
+          <h1 className="display mt-6 text-[2.6rem] font-medium leading-[1.05] text-ink sm:text-[3.6rem] md:text-[4.2rem]">
+            Mais que um sistema.
+            <br className="hidden sm:block" />{' '}
             <span className="font-serif italic text-ink-700">
-              inteira
+              O parceiro da sua clínica.
             </span>
-            ,
-            <br className="hidden sm:block" />
-            em um sistema só.
           </h1>
 
           <p className="mx-auto mt-7 max-w-xl text-lg leading-relaxed text-ink-500">
-            Agenda, prontuário, financeiro e agendamento online — pensados para
-            a realidade da clínica brasileira.
+            Agenda, prontuário, financeiro e agendamento online num só lugar —
+            configurado do jeito da sua clínica, não um molde genérico.
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">

@@ -6,7 +6,10 @@ export function CtaFinal() {
     <section id="contato" className="bg-white py-28 sm:py-40">
       <div className="mx-auto max-w-content px-6 sm:px-10">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="display text-4xl font-medium leading-[1.05] text-ink sm:text-[3.5rem]">
+          <p className="text-[12px] font-medium uppercase tracking-[0.18em] text-teal-dark">
+            Mais que um sistema, um parceiro
+          </p>
+          <h2 className="display mt-4 text-4xl font-medium leading-[1.05] text-ink sm:text-[3.5rem]">
             Uma hora.
             <br />
             <span className="font-serif italic text-ink-700">
