@@ -53,31 +53,11 @@ export async function POST(req: NextRequest) {
     referer,
   }
 
-  // A coluna intended_plan vem da migration 0002. Tentamos inserir com ela;
-  // se o banco ainda não a tiver, reinserimos sem ela — o plano segue para o
-  // GHL pelo payload da Edge Function de qualquer forma. Assim o deploy nunca
-  // quebra a captura de leads, mesmo antes da migration ser aplicada.
-  let result = await supabase
+  const { data: lead, error } = await supabase
     .from('leads')
-    .insert({ ...baseRow, intended_plan: data.intendedPlan })
+    .insert(baseRow)
     .select('id')
     .single()
-
-  if (
-    result.error &&
-    (result.error.code === '42703' || result.error.code === 'PGRST204')
-  ) {
-    console.warn(
-      '[api/lead] coluna intended_plan ausente — inserindo sem ela. Aplique a migration 0002.',
-    )
-    result = await supabase
-      .from('leads')
-      .insert(baseRow)
-      .select('id')
-      .single()
-  }
-
-  const { data: lead, error } = result
 
   if (error) {
     console.error('[api/lead] supabase insert failed', {
@@ -107,7 +87,6 @@ export async function POST(req: NextRequest) {
     // sem precisar de custom fields configurados de antemão.
     const tags = [
       'landing',
-      `plano: ${data.intendedPlan}`,
       `tipo: ${data.clinicType}`,
       `porte: ${data.professionals}`,
     ]

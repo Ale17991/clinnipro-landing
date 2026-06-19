@@ -3,13 +3,7 @@
 import { useState, type FormEvent } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { leadSchema, type LeadInput } from '@/lib/lead-schema'
-import {
-  clinicSizes,
-  clinicTypes,
-  planOptions,
-  lgpdNotice,
-  privacyEmail,
-} from '@/lib/site'
+import { clinicSizes, clinicTypes, lgpdNotice, privacyEmail } from '@/lib/site'
 
 type FieldErrors = Partial<Record<keyof LeadInput, string>>
 
@@ -20,13 +14,12 @@ const initial = {
   phone: '',
   email: '',
   professionals: '',
-  intendedPlan: '',
 }
 
 // Formato pesquisa: uma pergunta de cada vez, em 3 etapas curtas.
 const steps = [
   { title: 'Sua clínica', fields: ['clinicName', 'clinicType'] },
-  { title: 'Tamanho e plano', fields: ['professionals', 'intendedPlan'] },
+  { title: 'Tamanho da equipe', fields: ['professionals'] },
   { title: 'Como falar com você', fields: ['contactName', 'phone', 'email'] },
 ] as const
 
@@ -193,7 +186,7 @@ export function LeadForm() {
         </div>
       )}
 
-      {/* Etapa 2 — tamanho e plano */}
+      {/* Etapa 2 — tamanho da equipe */}
       {step === 1 && (
         <div className="space-y-5">
           <Select
@@ -203,14 +196,6 @@ export function LeadForm() {
             onChange={(v) => update('professionals', v)}
             error={errors.professionals}
             options={clinicSizes}
-          />
-          <Select
-            label="Plano pretendido"
-            id="intendedPlan"
-            value={values.intendedPlan}
-            onChange={(v) => update('intendedPlan', v)}
-            error={errors.intendedPlan}
-            options={planOptions}
           />
         </div>
       )}
