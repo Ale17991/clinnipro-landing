@@ -1,4 +1,3 @@
-import { site } from '@/lib/site'
 import { BookingMockup } from './BookingMockup'
 
 export function PublicBookingSection() {
@@ -20,13 +19,13 @@ export function PublicBookingSection() {
           </p>
 
           <div className="mt-6 flex flex-wrap items-center gap-2">
-            <p className="inline-flex items-center gap-2 rounded-full border border-ink/10 bg-[#FAFAFB] px-4 py-2 font-mono text-[12px] text-ink">
-              <span className="h-1.5 w-1.5 rounded-full bg-teal" />
-              {site.appUrl.replace('https://', '')}/agendar/sua-clinica
-            </p>
             <span className="inline-flex h-7 items-center gap-2 rounded-full border border-ink/10 bg-white px-3 text-[12px] font-medium text-ink">
               <span className="h-1.5 w-1.5 rounded-full bg-teal" />
-              Lembretes no WhatsApp
+              Endereço exclusivo da clínica
+            </span>
+            <span className="inline-flex h-7 items-center gap-2 rounded-full border border-ink/10 bg-white px-3 text-[12px] font-medium text-ink">
+              <span className="h-1.5 w-1.5 rounded-full bg-teal" />
+              Confirmação e lembrete no WhatsApp
             </span>
           </div>
         </div>

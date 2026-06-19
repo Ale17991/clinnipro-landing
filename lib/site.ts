@@ -208,7 +208,7 @@ export const capabilityGroups = [
     title: 'Integrações',
     icon: 'link',
     items: [
-      'GoHighLevel (CRM)',
+      'Integração com o seu CRM',
       'Google Agenda (bidirecional)',
       'Webhooks para qualquer sistema',
       'E-mail transacional',
@@ -342,7 +342,7 @@ export const addons = [
   },
   {
     title: 'Integrações / CRM',
-    desc: 'Disponível em qualquer plano. O homio não está incluso — conecte o CRM da sua preferência. Valor opcional, para quem quiser contratar o homio junto da clinni.',
+    desc: 'Conecte a clinni ao CRM da sua preferência. Disponível em qualquer plano.',
     price: 'a partir de R$ 156',
     unit: '/clínica',
     icon: 'link',

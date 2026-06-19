@@ -23,14 +23,24 @@ const initial = {
   intendedPlan: '',
 }
 
+// Formato pesquisa: uma pergunta de cada vez, em 3 etapas curtas.
+const steps = [
+  { title: 'Sua clínica', fields: ['clinicName', 'clinicType'] },
+  { title: 'Tamanho e plano', fields: ['professionals', 'intendedPlan'] },
+  { title: 'Como falar com você', fields: ['contactName', 'phone', 'email'] },
+] as const
+
 export function LeadForm() {
   const params = useSearchParams()
+  const [step, setStep] = useState(0)
   const [values, setValues] = useState(initial)
   const [errors, setErrors] = useState<FieldErrors>({})
   const [state, setState] = useState<
     'idle' | 'submitting' | 'success' | 'error'
   >('idle')
   const [serverError, setServerError] = useState<string | null>(null)
+
+  const isLast = step === steps.length - 1
 
   function update<K extends keyof typeof initial>(
     key: K,
@@ -40,31 +50,61 @@ export function LeadForm() {
     if (errors[key]) setErrors((e) => ({ ...e, [key]: undefined }))
   }
 
-  async function onSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    setServerError(null)
-
-    const utm = {
-      source: params.get('utm_source') ?? undefined,
-      medium: params.get('utm_medium') ?? undefined,
-      campaign: params.get('utm_campaign') ?? undefined,
-      term: params.get('utm_term') ?? undefined,
-      content: params.get('utm_content') ?? undefined,
-    }
-
-    const parsed = leadSchema.safeParse({
+  function payload() {
+    return {
       ...values,
       source: 'landing',
-      utm,
-    })
+      utm: {
+        source: params.get('utm_source') ?? undefined,
+        medium: params.get('utm_medium') ?? undefined,
+        campaign: params.get('utm_campaign') ?? undefined,
+        term: params.get('utm_term') ?? undefined,
+        content: params.get('utm_content') ?? undefined,
+      },
+    }
+  }
 
+  // Erros do schema restritos a um conjunto de campos (validação por etapa).
+  function errorsFor(fields: readonly string[]): FieldErrors {
+    const parsed = leadSchema.safeParse(payload())
+    if (parsed.success) return {}
+    const out: FieldErrors = {}
+    for (const issue of parsed.error.issues) {
+      const key = issue.path[0] as keyof LeadInput
+      if (fields.includes(key as string) && !out[key]) out[key] = issue.message
+    }
+    return out
+  }
+
+  function onNext() {
+    const next = errorsFor(steps[step].fields)
+    if (Object.keys(next).length) {
+      setErrors(next)
+      return
+    }
+    setErrors({})
+    setStep((s) => s + 1)
+  }
+
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    if (!isLast) {
+      onNext()
+      return
+    }
+
+    setServerError(null)
+    const parsed = leadSchema.safeParse(payload())
     if (!parsed.success) {
-      const next: FieldErrors = {}
+      const all: FieldErrors = {}
       for (const issue of parsed.error.issues) {
         const key = issue.path[0] as keyof LeadInput
-        if (!next[key]) next[key] = issue.message
+        if (!all[key]) all[key] = issue.message
       }
-      setErrors(next)
+      setErrors(all)
+      // Volta para a primeira etapa que tem erro.
+      const bad = steps.findIndex((s) => s.fields.some((f) => all[f as keyof LeadInput]))
+      if (bad >= 0) setStep(bad)
       return
     }
 
@@ -100,117 +140,164 @@ export function LeadForm() {
             <path d="M20 6 9 17l-5-5" />
           </svg>
         </div>
-        <h2 className="display mt-6 text-2xl font-medium text-ink">
-          Recebido.
-        </h2>
+        <h2 className="display mt-6 text-2xl font-medium text-ink">Recebido.</h2>
         <p className="mx-auto mt-3 max-w-sm text-[15px] leading-relaxed text-ink-500">
-          Nossa equipe entra em contato em até <strong className="text-ink">1 dia útil</strong> pelos
-          dados que você passou.
+          Nossa equipe entra em contato em até{' '}
+          <strong className="text-ink">1 dia útil</strong> pelos dados que você
+          passou.
         </p>
       </div>
     )
   }
 
   return (
-    <form noValidate onSubmit={onSubmit} className="space-y-5">
-      <Field
-        label="Nome da clínica"
-        id="clinicName"
-        autoComplete="organization"
-        value={values.clinicName}
-        onChange={(v) => update('clinicName', v)}
-        error={errors.clinicName}
-        placeholder="Clínica Bem-Estar"
-      />
-
-      <Field
-        label="Seu nome"
-        id="contactName"
-        autoComplete="name"
-        value={values.contactName}
-        onChange={(v) => update('contactName', v)}
-        error={errors.contactName}
-        placeholder="Dra. Helena Martins"
-      />
-
-      <Select
-        label="Tipo de clínica"
-        id="clinicType"
-        value={values.clinicType}
-        onChange={(v) => update('clinicType', v)}
-        error={errors.clinicType}
-        options={clinicTypes}
-      />
-
-      <div className="grid gap-5 sm:grid-cols-2">
-        <Field
-          label="Telefone"
-          id="phone"
-          type="tel"
-          autoComplete="tel"
-          inputMode="tel"
-          value={values.phone}
-          onChange={(v) => update('phone', v)}
-          error={errors.phone}
-          placeholder="(11) 99999-9999"
-        />
-        <Field
-          label="E-mail"
-          id="email"
-          type="email"
-          autoComplete="email"
-          inputMode="email"
-          value={values.email}
-          onChange={(v) => update('email', v)}
-          error={errors.email}
-          placeholder="voce@clinica.com.br"
-        />
+    <form noValidate onSubmit={onSubmit}>
+      {/* Cabeçalho de progresso */}
+      <div className="mb-7">
+        <div className="flex items-baseline justify-between">
+          <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-ink-500">
+            {steps[step].title}
+          </p>
+          <span className="text-[12px] font-medium text-ink-500">
+            {step + 1} de {steps.length}
+          </span>
+        </div>
+        <div className="mt-3 h-1 w-full overflow-hidden rounded-full bg-ink/[0.07]">
+          <div
+            className="h-full rounded-full bg-teal transition-all duration-300"
+            style={{ width: `${((step + 1) / steps.length) * 100}%` }}
+          />
+        </div>
       </div>
 
-      <Select
-        label="Quantos profissionais atendem"
-        id="professionals"
-        value={values.professionals}
-        onChange={(v) => update('professionals', v)}
-        error={errors.professionals}
-        options={clinicSizes}
-      />
+      {/* Etapa 1 — clínica */}
+      {step === 0 && (
+        <div className="space-y-5">
+          <Field
+            label="Nome da clínica"
+            id="clinicName"
+            autoComplete="organization"
+            value={values.clinicName}
+            onChange={(v) => update('clinicName', v)}
+            error={errors.clinicName}
+            placeholder="Clínica Bem-Estar"
+          />
+          <Select
+            label="Tipo de clínica"
+            id="clinicType"
+            value={values.clinicType}
+            onChange={(v) => update('clinicType', v)}
+            error={errors.clinicType}
+            options={clinicTypes}
+          />
+        </div>
+      )}
 
-      <Select
-        label="Plano pretendido"
-        id="intendedPlan"
-        value={values.intendedPlan}
-        onChange={(v) => update('intendedPlan', v)}
-        error={errors.intendedPlan}
-        options={planOptions}
-      />
+      {/* Etapa 2 — tamanho e plano */}
+      {step === 1 && (
+        <div className="space-y-5">
+          <Select
+            label="Quantos profissionais atendem"
+            id="professionals"
+            value={values.professionals}
+            onChange={(v) => update('professionals', v)}
+            error={errors.professionals}
+            options={clinicSizes}
+          />
+          <Select
+            label="Plano pretendido"
+            id="intendedPlan"
+            value={values.intendedPlan}
+            onChange={(v) => update('intendedPlan', v)}
+            error={errors.intendedPlan}
+            options={planOptions}
+          />
+        </div>
+      )}
 
-      <button
-        type="submit"
-        disabled={state === 'submitting'}
-        className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full bg-ink px-7 py-3.5 text-[14px] font-medium text-white transition hover:bg-ink-900 disabled:cursor-not-allowed disabled:opacity-60"
-      >
-        {state === 'submitting' ? 'Enviando…' : 'Agendar demonstração'}
-        {state !== 'submitting' && (
-          <span aria-hidden className="text-white/60">
-            →
-          </span>
+      {/* Etapa 3 — contato */}
+      {step === 2 && (
+        <div className="space-y-5">
+          <Field
+            label="Seu nome"
+            id="contactName"
+            autoComplete="name"
+            value={values.contactName}
+            onChange={(v) => update('contactName', v)}
+            error={errors.contactName}
+            placeholder="Dra. Helena Martins"
+          />
+          <div className="grid gap-5 sm:grid-cols-2">
+            <Field
+              label="Telefone"
+              id="phone"
+              type="tel"
+              autoComplete="tel"
+              inputMode="tel"
+              value={values.phone}
+              onChange={(v) => update('phone', v)}
+              error={errors.phone}
+              placeholder="(11) 99999-9999"
+            />
+            <Field
+              label="E-mail"
+              id="email"
+              type="email"
+              autoComplete="email"
+              inputMode="email"
+              value={values.email}
+              onChange={(v) => update('email', v)}
+              error={errors.email}
+              placeholder="voce@clinica.com.br"
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Navegação */}
+      <div className="mt-8 flex items-center gap-3">
+        {step > 0 && (
+          <button
+            type="button"
+            onClick={() => setStep((s) => s - 1)}
+            className="inline-flex items-center justify-center rounded-full border border-ink/15 px-5 py-3 text-[14px] font-medium text-ink-500 transition hover:text-ink"
+          >
+            Voltar
+          </button>
         )}
-      </button>
-
-      <p className="text-center text-[11.5px] leading-relaxed text-ink-500">
-        {lgpdNotice} Para acesso, correção ou exclusão, escreva para{' '}
-        <a
-          href={`mailto:${privacyEmail}`}
-          className="underline transition hover:text-ink"
+        <button
+          type="submit"
+          disabled={state === 'submitting'}
+          className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-ink px-7 py-3.5 text-[14px] font-medium text-white transition hover:bg-ink-900 disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {privacyEmail}
-        </a>
-        .
-      </p>
+          {state === 'submitting'
+            ? 'Enviando…'
+            : isLast
+              ? 'Agendar demonstração'
+              : 'Continuar'}
+          {state !== 'submitting' && (
+            <span aria-hidden className="text-white/60">
+              →
+            </span>
+          )}
+        </button>
+      </div>
+
+      {isLast && (
+        <p className="mt-5 text-center text-[11.5px] leading-relaxed text-ink-500">
+          {lgpdNotice} Para acesso, correção ou exclusão, escreva para{' '}
+          <a
+            href={`mailto:${privacyEmail}`}
+            className="underline transition hover:text-ink"
+          >
+            {privacyEmail}
+          </a>
+          .
+        </p>
+      )}
 
       {serverError && (
-        <p className="text-center text-[13px] text-rose-700" role="alert">
+        <p className="mt-4 text-center text-[13px] text-rose-700" role="alert">
           {serverError}
         </p>
       )}
