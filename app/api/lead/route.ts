@@ -130,18 +130,35 @@ export async function POST(req: NextRequest) {
           })
           .eq('id', lead.id)
       } else {
-        const errText = await ghlRes.text().catch(() => '')
-        console.warn('[api/lead] GHL non-2xx', {
-          status: ghlRes.status,
-          leadId: lead.id,
-        })
-        await supabase
-          .from('leads')
-          .update({
-            ghl_status: 'failed',
-            ghl_error: `HTTP ${ghlRes.status} ${errText}`.slice(0, 500),
+        // 400 com meta.contactId = contato já existe na subconta. Tratamos como
+        // sincronizado (não é erro) para não ficar reprocessando duplicado.
+        const json = (await ghlRes.json().catch(() => null)) as
+          | { message?: string; meta?: { contactId?: string } }
+          | null
+        const dupId = json?.meta?.contactId
+
+        if (dupId) {
+          await supabase
+            .from('leads')
+            .update({
+              ghl_status: 'sent',
+              ghl_contact_id: dupId,
+              ghl_synced_at: new Date().toISOString(),
+            })
+            .eq('id', lead.id)
+        } else {
+          console.warn('[api/lead] CRM non-2xx', {
+            status: ghlRes.status,
+            leadId: lead.id,
           })
-          .eq('id', lead.id)
+          await supabase
+            .from('leads')
+            .update({
+              ghl_status: 'failed',
+              ghl_error: `HTTP ${ghlRes.status} ${json?.message ?? ''}`.slice(0, 500),
+            })
+            .eq('id', lead.id)
+        }
       }
     } catch (e) {
       const message = e instanceof Error ? e.message : String(e)
