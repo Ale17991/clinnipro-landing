@@ -16,3 +16,5 @@ next-env.d.ts
 # Claude Code — arquivos locais/runtime
 .claude/settings.local.json
 .claude/scheduled_tasks.lock
+
+.vercel

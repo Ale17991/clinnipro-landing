@@ -20,8 +20,8 @@ export function SpecialtiesSection() {
             <span className="font-serif italic text-ink-700">a gente cria</span>.
           </h2>
           <p className="mt-6 text-[15px] leading-relaxed text-ink-500">
-            A maioria dos sistemas para na agenda. Quando a sua especialidade
-            precisa de um fluxo que nenhum sistema tem, a clinni desenvolve — sem
+            Agenda e prontuário são só o começo. Quando a sua especialidade
+            precisa de um fluxo que ainda não existe, a clinni desenvolve — sem
             você trocar de plataforma. E isso não é promessa: já fizemos. Estes
             módulos nasceram de necessidades reais de clínica e hoje rodam no
             produto.

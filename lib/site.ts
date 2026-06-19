@@ -34,7 +34,7 @@ export const partnerPillars = [
   },
   {
     title: 'Do seu jeito',
-    desc: 'Fluxos e relatórios sob medida pra rotina da sua clínica, não um molde genérico.',
+    desc: 'Fluxos e relatórios sob medida pra rotina da sua clínica.',
     icon: 'settings',
   },
   {
