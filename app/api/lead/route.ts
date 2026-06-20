@@ -93,15 +93,13 @@ export async function POST(req: NextRequest) {
     ]
     if (data.utm?.campaign) tags.push(`campanha: ${data.utm.campaign}`)
 
-    // Campos personalizados criados na subconta (fieldKey exatamente como a GHL
-    // gerou — inclusive o "tipo_de_clnica" sem o "i").
+    // Campos personalizados da subconta. No v2 o key NÃO leva o prefixo
+    // "contact." (isso é só do merge-tag). Mantém o "tipo_de_clnica" sem o "i",
+    // como a GHL gerou.
     const customFields = [
-      { key: 'contact.nome_da_clinica', field_value: data.clinicName },
-      { key: 'contact.tipo_de_clnica', field_value: data.clinicType },
-      {
-        key: 'contact.quantos_profissionais_atendem',
-        field_value: data.professionals,
-      },
+      { key: 'nome_da_clinica', field_value: data.clinicName },
+      { key: 'tipo_de_clnica', field_value: data.clinicType },
+      { key: 'quantos_profissionais_atendem', field_value: data.professionals },
     ]
 
     try {
