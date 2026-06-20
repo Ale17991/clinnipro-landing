@@ -86,11 +86,23 @@ export async function POST(req: NextRequest) {
     // Dados estruturados como tags — prontos para automações no GHL,
     // sem precisar de custom fields configurados de antemão.
     const tags = [
+      'veio-da-lp',
       'landing',
       `tipo: ${data.clinicType}`,
       `porte: ${data.professionals}`,
     ]
     if (data.utm?.campaign) tags.push(`campanha: ${data.utm.campaign}`)
+
+    // Campos personalizados criados na subconta (fieldKey exatamente como a GHL
+    // gerou — inclusive o "tipo_de_clnica" sem o "i").
+    const customFields = [
+      { key: 'contact.nome_da_clinica', field_value: data.clinicName },
+      { key: 'contact.tipo_de_clnica', field_value: data.clinicType },
+      {
+        key: 'contact.quantos_profissionais_atendem',
+        field_value: data.professionals,
+      },
+    ]
 
     try {
       const ghlRes = await fetch(
@@ -111,6 +123,7 @@ export async function POST(req: NextRequest) {
             companyName: data.clinicName,
             source: data.utm?.source ?? data.source ?? 'landing',
             tags,
+            customFields,
           }),
           // Não trava a UX: se o GHL não responder em 8s, soltamos.
           signal: AbortSignal.timeout(8000),
