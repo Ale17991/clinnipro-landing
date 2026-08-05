@@ -8,7 +8,7 @@ export function SpecialtiesSection() {
   return (
     <section
       id="especialidades"
-      className="border-t border-ink/5 bg-[#FAFAFB] py-28 sm:py-36"
+      className="border-t border-ink/5 bg-mist-light py-28 sm:py-36"
     >
       <div className="mx-auto max-w-content px-6 sm:px-10">
         <div className="max-w-2xl">
@@ -36,8 +36,8 @@ export function SpecialtiesSection() {
               className="flex flex-col rounded-2xl bg-white p-6 ring-1 ring-ink/5"
             >
               <div className="flex items-center justify-between">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-teal/10">
-                  <Icon name={m.icon} className="h-5 w-5 text-teal" />
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10">
+                  <Icon name={m.icon} className="h-5 w-5 text-accent" />
                 </div>
                 <span className="rounded-full bg-ink/[0.04] px-2.5 py-1 text-[11px] font-medium text-ink-500">
                   {m.tag}
@@ -57,7 +57,7 @@ export function SpecialtiesSection() {
         <div className="mt-8 flex flex-col gap-5 rounded-2xl bg-ink p-8 text-white sm:flex-row sm:items-center sm:justify-between sm:p-10">
           <div className="max-w-xl">
             <div className="flex items-center gap-2.5">
-              <Icon name="sparkle" className="h-4 w-4 text-teal-light" />
+              <Icon name="sparkle" className="h-4 w-4 text-accent-light" />
               <h3 className="text-[15px] font-medium uppercase tracking-[0.12em] text-white/70">
                 {customModule.title}
               </h3>
@@ -68,7 +68,7 @@ export function SpecialtiesSection() {
           </div>
           <a
             href="/demonstracao"
-            className="inline-flex shrink-0 items-center justify-center gap-2 self-start rounded-full bg-teal px-6 py-3 text-[14px] font-medium text-white transition hover:bg-teal-dark sm:self-auto"
+            className="inline-flex shrink-0 items-center justify-center gap-2 self-start rounded-full bg-accent px-6 py-3 text-[14px] font-medium text-white transition hover:bg-accent-dark sm:self-auto"
           >
             Contar o que falta na minha clínica
             <span aria-hidden className="text-white/60">

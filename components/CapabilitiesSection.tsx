@@ -29,7 +29,7 @@ export function CapabilitiesSection() {
           {capabilityGroups.map((g) => (
             <div key={g.title}>
               <div className="flex items-center gap-2.5">
-                <Icon name={g.icon} className="h-4 w-4 text-teal" />
+                <Icon name={g.icon} className="h-4 w-4 text-accent" />
                 <h3 className="text-[13px] font-semibold uppercase tracking-[0.1em] text-ink">
                   {g.title}
                 </h3>
@@ -42,7 +42,7 @@ export function CapabilitiesSection() {
                   >
                     <Icon
                       name="check"
-                      className="mt-[2px] h-3.5 w-3.5 shrink-0 text-teal/70"
+                      className="mt-[2px] h-3.5 w-3.5 shrink-0 text-accent/70"
                     />
                     <span>{item}</span>
                   </li>

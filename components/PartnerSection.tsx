@@ -9,12 +9,12 @@ export function PartnerSection() {
     <section id="parceria" className="border-t border-ink/5 bg-ink py-28 sm:py-36">
       <div className="mx-auto max-w-content px-6 sm:px-10">
         <div className="max-w-2xl">
-          <p className="text-[12px] font-medium uppercase tracking-[0.18em] text-teal-light">
+          <p className="text-[12px] font-medium uppercase tracking-[0.18em] text-accent-light">
             Mais que um sistema
           </p>
           <h2 className="display mt-4 text-4xl font-medium leading-[1.1] text-white sm:text-5xl">
             A gente se adapta à sua clínica,{' '}
-            <span className="font-serif italic text-teal-light">
+            <span className="font-serif italic text-accent-light">
               não o contrário
             </span>
             .
@@ -30,7 +30,7 @@ export function PartnerSection() {
           {partnerPillars.map((p) => (
             <article key={p.title}>
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/[0.06] ring-1 ring-white/10">
-                <Icon name={p.icon} className="h-4 w-4 text-teal-light" />
+                <Icon name={p.icon} className="h-4 w-4 text-accent-light" />
               </div>
               <h3 className="mt-4 text-[16px] font-medium text-white">
                 {p.title}

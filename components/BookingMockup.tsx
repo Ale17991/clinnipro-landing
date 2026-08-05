@@ -17,8 +17,8 @@ export function BookingMockup() {
 
   return (
     <div className="relative">
-      <div className="relative overflow-hidden rounded-xl bg-white shadow-[0_24px_60px_-24px_rgba(11,27,38,0.18),0_0_0_1px_rgba(11,27,38,0.06)]">
-        <div className="bg-gradient-to-b from-[#FAFAFB] to-white p-8">
+      <div className="relative overflow-hidden rounded-xl bg-white shadow-[0_24px_60px_-24px_rgba(20,29,35,0.18),0_0_0_1px_rgba(20,29,35,0.06)]">
+        <div className="bg-gradient-to-b from-mist-light to-white p-8">
           <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-ink-500">
             Clínica Bem-Estar
           </p>
@@ -51,8 +51,8 @@ export function BookingMockup() {
                     isSelected
                       ? 'bg-ink text-white'
                       : s.taken
-                        ? 'cursor-not-allowed bg-ink/5 text-ink-500/40 line-through'
-                        : 'border border-ink/10 bg-white text-ink hover:border-teal hover:text-teal-dark'
+                        ? 'cursor-not-allowed bg-ink/5 text-ink-400/80 line-through'
+                        : 'border border-ink/10 bg-white text-ink hover:border-accent hover:text-accent-dark'
                   }`}
                 >
                   {s.h}
@@ -65,7 +65,7 @@ export function BookingMockup() {
             type="button"
             onClick={() => setConfirmed(true)}
             className={`mt-8 flex w-full items-center justify-center gap-2 rounded-full py-3 text-[13px] font-medium text-white transition ${
-              confirmed ? 'bg-teal' : 'bg-ink hover:bg-ink-900'
+              confirmed ? 'bg-accent' : 'bg-ink hover:bg-ink-900'
             }`}
           >
             {confirmed ? (
@@ -81,7 +81,7 @@ export function BookingMockup() {
       </div>
 
       {/* Bolha WhatsApp — reage à seleção e à confirmação */}
-      <div className="absolute -bottom-10 -left-4 hidden w-64 rotate-[-2deg] rounded-2xl bg-white p-4 shadow-[0_24px_60px_-24px_rgba(11,27,38,0.25),0_0_0_1px_rgba(11,27,38,0.06)] transition sm:block lg:-left-10">
+      <div className="absolute -bottom-10 -left-4 hidden w-64 rotate-[-2deg] rounded-2xl bg-white p-4 shadow-[0_24px_60px_-24px_rgba(20,29,35,0.25),0_0_0_1px_rgba(20,29,35,0.06)] transition sm:block lg:-left-10">
         <div className="flex items-center gap-2">
           <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#25D366] text-[10px] font-bold text-white">
             W

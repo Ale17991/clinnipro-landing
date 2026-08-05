@@ -5,28 +5,34 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Paleta restrita — fidelidade ao app real, sem excessos.
+        // Paleta de marca 2026 — azul profundo + laranja de destaque.
+        // Base: #141D23 · #003883 · #558CD3 · #8C9DB3 · #EBECF0 · #EE4B00
         ink: {
-          DEFAULT: '#0B1B26', // texto principal, quase preto azulado
-          900: '#0A1620',
-          700: '#1F3645',
-          500: '#516676',
+          DEFAULT: '#141D23', // texto principal, quase preto azulado
+          900: '#0D1419', // fundos escuros / hover em superfícies escuras
+          700: '#3A4756',
+          500: '#5A6B80', // texto secundário (AA em branco: 5.4:1)
+          400: '#8C9DB3', // tom apagado da paleta — decorativo / sobre escuro
         },
         navy: {
-          DEFAULT: '#0E3C5B',
-          deep: '#0A2E44',
-          900: '#082338',
-          700: '#1C4F71',
+          DEFAULT: '#003883',
+          deep: '#002A63',
+          900: '#001E48',
+          700: '#0A4A9E',
         },
-        primary: '#1C4F71',
-        teal: {
-          DEFAULT: '#1CABB0',
-          dark: '#126F72',
-          light: '#CBE1E1',
+        primary: '#003883',
+        accent: {
+          DEFAULT: '#EE4B00',
+          dark: '#C23A00', // laranja legível como texto em fundo claro
+          light: '#FFD3BF', // sobre fundos escuros
         },
         sky: {
-          DEFAULT: '#569AC6',
-          light: '#CBE6F8',
+          DEFAULT: '#558CD3',
+          light: '#DCE7F6',
+        },
+        mist: {
+          DEFAULT: '#EBECF0',
+          light: '#F4F5F8',
         },
       },
       fontFamily: {

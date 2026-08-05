@@ -9,7 +9,7 @@ const timeline = [
 
 export function ProntuarioSection() {
   return (
-    <section id="prontuario" className="bg-[#FAFAFB] py-28 sm:py-36">
+    <section id="prontuario" className="bg-mist-light py-28 sm:py-36">
       <div className="mx-auto grid max-w-content gap-20 px-6 sm:px-10 lg:grid-cols-2 lg:items-center lg:gap-24">
         <div>
           <p className="text-[12px] font-medium uppercase tracking-[0.18em] text-ink-500">
@@ -26,7 +26,7 @@ export function ProntuarioSection() {
 
           <p className="mt-6 inline-flex items-center gap-3 text-[13px] text-ink-500">
             <span className="inline-flex h-7 items-center gap-2 rounded-full border border-ink/10 bg-white px-3 font-medium text-ink">
-              <span className="h-1.5 w-1.5 rounded-full bg-teal" />
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
               Receita digital pela Memed
             </span>
           </p>
@@ -34,7 +34,7 @@ export function ProntuarioSection() {
 
         {/* Mockup: clean, sem 3 colunas, sem sidebar lateral */}
         <div className="relative">
-          <div className="relative overflow-hidden rounded-xl bg-white shadow-[0_24px_60px_-24px_rgba(11,27,38,0.18),0_0_0_1px_rgba(11,27,38,0.06)]">
+          <div className="relative overflow-hidden rounded-xl bg-white shadow-[0_24px_60px_-24px_rgba(20,29,35,0.18),0_0_0_1px_rgba(20,29,35,0.06)]">
             <div className="flex items-center justify-between border-b border-ink/5 px-6 py-4">
               <div className="flex items-center gap-3">
                 <div className="flex h-9 w-9 items-center justify-center rounded-full bg-ink text-[12px] font-semibold text-white">
@@ -57,13 +57,13 @@ export function ProntuarioSection() {
                   <li key={i} className="group relative">
                     <span
                       className={`absolute -left-6 top-1 h-2.5 w-2.5 rounded-full ring-4 ring-white transition-transform duration-200 group-hover:scale-125 ${
-                        i === 0 ? 'bg-teal' : 'bg-ink/20 group-hover:bg-teal'
+                        i === 0 ? 'bg-accent' : 'bg-ink/20 group-hover:bg-accent'
                       }`}
                     />
                     <p className="text-[10.5px] font-medium uppercase tracking-[0.14em] text-ink-500">
                       {t.date}
                     </p>
-                    <p className="mt-0.5 text-[13.5px] font-medium text-ink transition-colors group-hover:text-teal-dark">
+                    <p className="mt-0.5 text-[13.5px] font-medium text-ink transition-colors group-hover:text-accent-dark">
                       {t.title}
                     </p>
                     <p className="text-[12px] text-ink-500">{t.sub}</p>

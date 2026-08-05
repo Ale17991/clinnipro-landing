@@ -8,10 +8,10 @@ export function Hero() {
       {/* Glow sutil — sem dots, sem ruído */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-0 h-[640px] w-[1100px] -translate-x-1/2 bg-gradient-radial from-teal/[0.07] via-transparent to-transparent blur-3xl"
+        className="pointer-events-none absolute left-1/2 top-0 h-[640px] w-[1100px] -translate-x-1/2 bg-gradient-radial from-accent/[0.07] via-transparent to-transparent blur-3xl"
         style={{
           backgroundImage:
-            'radial-gradient(ellipse at center top, rgba(28,171,176,0.10), transparent 60%)',
+            'radial-gradient(ellipse at center top, rgba(238,75,0,0.09), transparent 60%)',
         }}
       />
 
@@ -19,7 +19,7 @@ export function Hero() {
         <div className="mx-auto max-w-3xl text-center">
           <a
             href="#parceria"
-            className="inline-flex items-center gap-2 rounded-full border border-teal/30 bg-teal/[0.06] px-4 py-1.5 text-[12.5px] font-medium text-teal-dark transition hover:bg-teal/10"
+            className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/[0.06] px-4 py-1.5 text-[12.5px] font-medium text-accent-dark transition hover:bg-accent/10"
           >
             <Icon name="sparkle" className="h-3.5 w-3.5" />
             Cada clínica tem uma conta sob medida
@@ -58,7 +58,7 @@ export function Hero() {
           <ul className="mt-9 flex flex-wrap items-center justify-center gap-x-6 gap-y-2.5 text-[12.5px] text-ink-500">
             {trustBadges.map((b) => (
               <li key={b.label} className="flex items-center gap-1.5">
-                <Icon name={b.icon} className="h-3.5 w-3.5 text-teal" />
+                <Icon name={b.icon} className="h-3.5 w-3.5 text-accent" />
                 {b.label}
               </li>
             ))}

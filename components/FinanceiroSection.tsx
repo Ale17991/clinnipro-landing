@@ -35,7 +35,7 @@ export function FinanceiroSection() {
                   <div
                     key={i}
                     className={`flex-1 rounded-t-sm transition-colors ${
-                      i === 9 ? 'bg-teal' : 'bg-ink/10 hover:bg-ink/25'
+                      i === 9 ? 'bg-accent' : 'bg-ink/10 hover:bg-ink/25'
                     }`}
                     style={{ height: `${h}%` }}
                   />

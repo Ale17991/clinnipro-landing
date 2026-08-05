@@ -20,7 +20,7 @@ export function PricingSection() {
   const [annual, setAnnual] = useState(false)
 
   return (
-    <section id="planos" className="border-t border-ink/5 bg-[#FAFAFB] py-28 sm:py-36">
+    <section id="planos" className="border-t border-ink/5 bg-mist-light py-28 sm:py-36">
       <div className="mx-auto max-w-content px-6 sm:px-10">
         <div className="max-w-2xl">
           <p className="text-[12px] font-medium uppercase tracking-[0.18em] text-ink-500">
@@ -69,12 +69,12 @@ export function PricingSection() {
                 key={plan.id}
                 className={
                   plan.featured
-                    ? 'relative rounded-2xl bg-ink p-8 text-white shadow-[0_30px_80px_-30px_rgba(11,27,38,0.55)] ring-1 ring-ink lg:-mt-4 lg:pb-10'
+                    ? 'relative rounded-2xl bg-ink p-8 text-white shadow-[0_30px_80px_-30px_rgba(20,29,35,0.55)] ring-1 ring-ink lg:-mt-4 lg:pb-10'
                     : 'relative rounded-2xl border border-ink/10 bg-white p-8 text-ink'
                 }
               >
                 {plan.badge && (
-                  <span className="absolute -top-3 left-8 rounded-full bg-teal px-3 py-1 text-[11px] font-medium uppercase tracking-[0.12em] text-white">
+                  <span className="absolute -top-3 left-8 rounded-full bg-accent px-3 py-1 text-[11px] font-medium uppercase tracking-[0.12em] text-white">
                     {plan.badge}
                   </span>
                 )}
@@ -110,7 +110,7 @@ export function PricingSection() {
                   href="/demonstracao"
                   className={
                     plan.featured
-                      ? 'mt-7 flex items-center justify-center rounded-full bg-teal px-5 py-3 text-[14px] font-medium text-white transition hover:bg-teal-dark'
+                      ? 'mt-7 flex items-center justify-center rounded-full bg-accent px-5 py-3 text-[14px] font-medium text-white transition hover:bg-accent-dark'
                       : 'mt-7 flex items-center justify-center rounded-full bg-ink px-5 py-3 text-[14px] font-medium text-white transition hover:bg-ink-900'
                   }
                 >
@@ -137,7 +137,7 @@ export function PricingSection() {
                         <Icon
                           name="check"
                           className={`mt-0.5 h-4 w-4 shrink-0 ${
-                            plan.featured ? 'text-teal-light' : 'text-teal'
+                            plan.featured ? 'text-accent-light' : 'text-accent'
                           }`}
                         />
                         <span
@@ -189,7 +189,7 @@ export function PricingSection() {
               >
                 <div>
                   <div className="flex items-center gap-2.5">
-                    <Icon name={addon.icon} className="h-4 w-4 shrink-0 text-teal" />
+                    <Icon name={addon.icon} className="h-4 w-4 shrink-0 text-accent" />
                     <h4 className="text-[15px] font-medium text-ink">{addon.title}</h4>
                   </div>
                   <p className="mt-2 text-[13px] leading-relaxed text-ink-500">{addon.desc}</p>

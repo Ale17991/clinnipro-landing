@@ -20,11 +20,11 @@ export function PublicBookingSection() {
 
           <div className="mt-6 flex flex-wrap items-center gap-2">
             <span className="inline-flex h-7 items-center gap-2 rounded-full border border-ink/10 bg-white px-3 text-[12px] font-medium text-ink">
-              <span className="h-1.5 w-1.5 rounded-full bg-teal" />
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
               Endereço exclusivo da clínica
             </span>
             <span className="inline-flex h-7 items-center gap-2 rounded-full border border-ink/10 bg-white px-3 text-[12px] font-medium text-ink">
-              <span className="h-1.5 w-1.5 rounded-full bg-teal" />
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
               Confirmação e lembrete no WhatsApp
             </span>
           </div>

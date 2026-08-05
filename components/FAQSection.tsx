@@ -2,7 +2,7 @@ import { faqs } from '@/lib/site'
 
 export function FAQSection() {
   return (
-    <section id="faq" className="bg-[#FAFAFB] py-28 sm:py-36">
+    <section id="faq" className="bg-mist-light py-28 sm:py-36">
       <div className="mx-auto max-w-content px-6 sm:px-10">
         <div className="grid gap-16 lg:grid-cols-[1fr_1.6fr] lg:gap-24">
           <div className="lg:sticky lg:top-32 lg:self-start">

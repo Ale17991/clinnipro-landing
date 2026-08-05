@@ -38,7 +38,7 @@ const titles: Record<ScreenId, string> = {
 }
 
 const toneMap: Record<string, string> = {
-  teal: 'bg-teal',
+  accent: 'bg-accent',
   sky: 'bg-sky',
   amber: 'bg-amber-400',
 }
@@ -52,9 +52,9 @@ export function DesktopMockup() {
         aria-hidden
         className="absolute inset-x-12 -bottom-6 h-24 rounded-[100%] bg-ink/15 blur-3xl"
       />
-      <div className="relative overflow-hidden rounded-xl bg-white shadow-[0_24px_60px_-24px_rgba(11,27,38,0.25),0_0_0_1px_rgba(11,27,38,0.06)]">
+      <div className="relative overflow-hidden rounded-xl bg-white shadow-[0_24px_60px_-24px_rgba(20,29,35,0.25),0_0_0_1px_rgba(20,29,35,0.06)]">
         {/* Top bar */}
-        <div className="flex h-9 items-center gap-2 border-b border-ink/5 bg-[#FAFAFB] px-4 text-[11px] text-ink-500">
+        <div className="flex h-9 items-center gap-2 border-b border-ink/5 bg-mist px-4 text-[11px] text-ink-500">
           <span className="h-2 w-2 rounded-full bg-ink/15" />
           <span className="h-2 w-2 rounded-full bg-ink/15" />
           <span className="h-2 w-2 rounded-full bg-ink/15" />
@@ -68,7 +68,7 @@ export function DesktopMockup() {
           {/* Sidebar interativa */}
           <aside className="hidden w-48 shrink-0 flex-col bg-navy-900 p-3.5 sm:flex">
             <div className="mb-6 flex items-center gap-2">
-              <div className="flex h-6 w-6 items-center justify-center rounded bg-teal text-[10px] font-bold text-navy-900">
+              <div className="flex h-6 w-6 items-center justify-center rounded bg-accent text-[10px] font-bold text-white">
                 C
               </div>
               <span className="text-[11px] font-semibold text-white">
@@ -156,10 +156,10 @@ function SideGroup({
 /* ---------- Telas ---------- */
 
 const appts = [
-  { time: '08:00', name: 'Maria Santos', proc: 'Consulta · Dra. Helena', tone: 'teal' },
+  { time: '08:00', name: 'Maria Santos', proc: 'Consulta · Dra. Helena', tone: 'accent' },
   { time: '09:30', name: 'João Pereira', proc: 'Retorno · Dr. Rafael', tone: 'sky' },
   { time: '11:00', name: 'Ana Lima', proc: 'Avaliação · Dra. Carla', tone: 'amber' },
-  { time: '14:00', name: 'Carlos Souza', proc: 'Procedimento · Dra. Helena', tone: 'teal' },
+  { time: '14:00', name: 'Carlos Souza', proc: 'Procedimento · Dra. Helena', tone: 'accent' },
 ]
 
 function Agenda() {
@@ -179,7 +179,7 @@ function Agenda() {
               type="button"
               onClick={() => setSel(on ? null : a.time)}
               className={`flex w-full items-center gap-3 rounded-lg border bg-white px-3 py-2.5 text-left transition ${
-                on ? 'border-teal/50 ring-1 ring-teal/25' : 'border-ink/5 hover:border-teal/40 hover:bg-[#FAFAFB]'
+                on ? 'border-accent/50 ring-1 ring-accent/25' : 'border-ink/5 hover:border-accent/40 hover:bg-mist-light'
               }`}
             >
               <span className="w-10 text-[11px] font-medium text-ink-500">{a.time}</span>
@@ -188,7 +188,7 @@ function Agenda() {
                 <p className="truncate text-[12.5px] font-medium text-ink">{a.name}</p>
                 <p className="text-[10.5px] text-ink-500">{a.proc}</p>
               </div>
-              {on && <Icon name="check" className="h-3.5 w-3.5 text-teal" />}
+              {on && <Icon name="check" className="h-3.5 w-3.5 text-accent" />}
             </button>
           )
         })}
@@ -209,8 +209,8 @@ function Pacientes() {
   return (
     <div>
       <div className="flex items-center gap-2 rounded-lg border border-ink/10 px-3 py-2">
-        <Icon name="search" className="h-3.5 w-3.5 text-ink-500/60" />
-        <span className="text-[12px] text-ink-500/60">Buscar paciente</span>
+        <Icon name="search" className="h-3.5 w-3.5 text-ink-400" />
+        <span className="text-[12px] text-ink-400">Buscar paciente</span>
       </div>
       <div className="mt-3 space-y-1.5">
         {patients.map((p) => (
@@ -218,14 +218,14 @@ function Pacientes() {
             key={p.name}
             className="flex items-center gap-3 rounded-lg border border-ink/5 px-3 py-2.5"
           >
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-teal/10 text-[10px] font-semibold text-teal-dark">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent/10 text-[10px] font-semibold text-accent-dark">
               {p.init}
             </div>
             <div className="min-w-0 flex-1">
               <p className="truncate text-[12.5px] font-medium text-ink">{p.name}</p>
               <p className="text-[10.5px] text-ink-500">{p.tag}</p>
             </div>
-            <Icon name="clipboard" className="h-3.5 w-3.5 text-ink-500/30" />
+            <Icon name="clipboard" className="h-3.5 w-3.5 text-ink-400/60" />
           </div>
         ))}
       </div>
@@ -243,7 +243,7 @@ const timeline = [
 function Prontuario() {
   return (
     <div>
-      <div className="flex items-center justify-between rounded-lg border border-ink/5 bg-[#FAFAFB] px-4 py-3">
+      <div className="flex items-center justify-between rounded-lg border border-ink/5 bg-mist-light px-4 py-3">
         <div>
           <p className="text-[13px] font-semibold text-ink">Maria Santos</p>
           <p className="text-[10.5px] text-ink-500">38 anos · Unimed</p>
@@ -256,7 +256,7 @@ function Prontuario() {
         {timeline.map((t, i) => (
           <div key={i} className="flex gap-3">
             <div className="flex flex-col items-center">
-              <span className={`mt-1 h-2 w-2 rounded-full ${t.on ? 'bg-teal' : 'bg-ink/20'}`} />
+              <span className={`mt-1 h-2 w-2 rounded-full ${t.on ? 'bg-accent' : 'bg-ink/20'}`} />
               {i < timeline.length - 1 && <span className="my-0.5 w-[1.5px] flex-1 bg-ink/10" />}
             </div>
             <div className="-mt-0.5 pb-1">
@@ -275,13 +275,13 @@ const tasks = [
   { t: 'Confirmar exames da Maria Santos', who: 'Recepção', status: 'Hoje', tone: 'amber' },
   { t: 'Enviar orçamento — João Pereira', who: 'Dra. Helena', status: 'Atrasada', tone: 'rose' },
   { t: 'Retorno de ligação — Ana Lima', who: 'Recepção', status: 'Amanhã', tone: 'sky' },
-  { t: 'Fechar repasse de maio', who: 'Financeiro', status: 'Concluída', tone: 'teal' },
+  { t: 'Fechar repasse de maio', who: 'Financeiro', status: 'Concluída', tone: 'accent' },
 ]
 const taskTone: Record<string, string> = {
   amber: 'bg-amber-50 text-amber-700',
   rose: 'bg-rose-50 text-rose-600',
   sky: 'bg-sky/10 text-sky',
-  teal: 'bg-teal/10 text-teal-dark',
+  accent: 'bg-accent/10 text-accent-dark',
 }
 
 function Tarefas() {
@@ -351,7 +351,7 @@ function Fluxo() {
         {bars.map((h, i) => (
           <div key={i} className="flex flex-1 flex-col items-center gap-1.5">
             <span
-              className={`w-full rounded-sm ${i === bars.length - 1 ? 'bg-teal' : 'bg-ink/10'}`}
+              className={`w-full rounded-sm ${i === bars.length - 1 ? 'bg-accent' : 'bg-ink/10'}`}
               style={{ height: `${h * 1.4}px` }}
             />
           </div>
@@ -362,7 +362,7 @@ function Fluxo() {
           <span className="h-2 w-2 rounded-sm bg-ink/10" /> entradas
         </span>
         <span className="flex items-center gap-1.5">
-          <span className="h-2 w-2 rounded-sm bg-teal" /> hoje
+          <span className="h-2 w-2 rounded-sm bg-accent" /> hoje
         </span>
       </div>
     </div>
@@ -384,7 +384,7 @@ function Relatorios() {
           <div key={k.label} className="rounded-lg border border-ink/5 px-3 py-3">
             <p className="text-[10px] text-ink-500">{k.label}</p>
             <p className="mt-1 text-[15px] font-semibold text-ink">{k.value}</p>
-            <p className="text-[10px] font-medium text-teal-dark">{k.delta}</p>
+            <p className="text-[10px] font-medium text-accent-dark">{k.delta}</p>
           </div>
         ))}
       </div>
@@ -393,7 +393,7 @@ function Relatorios() {
         {repBars.map((h, i) => (
           <span
             key={i}
-            className={`flex-1 rounded-t-sm ${i === repBars.length - 1 ? 'bg-teal' : 'bg-ink/10'}`}
+            className={`flex-1 rounded-t-sm ${i === repBars.length - 1 ? 'bg-accent' : 'bg-ink/10'}`}
             style={{ height: `${h}%` }}
           />
         ))}

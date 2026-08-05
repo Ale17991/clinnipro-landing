@@ -17,7 +17,7 @@ const tabs = [
 type TabId = (typeof tabs)[number]['id']
 
 const toneMap: Record<string, string> = {
-  teal: 'bg-teal',
+  accent: 'bg-accent',
   sky: 'bg-sky',
   amber: 'bg-amber-400',
 }
@@ -28,7 +28,7 @@ export function MobileShowcase() {
   return (
     <section
       id="celular"
-      className="border-t border-ink/5 bg-[#FAFAFB] py-28 sm:py-36"
+      className="border-t border-ink/5 bg-mist-light py-28 sm:py-36"
     >
       <div className="mx-auto grid max-w-content items-center gap-16 px-6 sm:px-10 lg:grid-cols-2 lg:gap-12">
         {/* Texto */}
@@ -47,8 +47,8 @@ export function MobileShowcase() {
 
           <p className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[13px] font-medium text-ink-700 ring-1 ring-ink/10">
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal/60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-teal" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent/60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
             </span>
             Toque na barra de baixo para navegar
           </p>
@@ -92,7 +92,7 @@ function Phone({ tab, onTab }: { tab: TabId; onTab: (t: TabId) => void }) {
       />
 
       {/* Moldura externa metálica */}
-      <div className="relative rounded-[3rem] bg-gradient-to-b from-[#33454f] via-ink to-[#19262f] p-[3px] shadow-[0_44px_90px_-26px_rgba(11,27,38,0.6)]">
+      <div className="relative rounded-[3rem] bg-gradient-to-b from-[#3A4756] via-ink to-[#141D23] p-[3px] shadow-[0_44px_90px_-26px_rgba(20,29,35,0.6)]">
         {/* Bisel preto */}
         <div className="rounded-[2.85rem] bg-black p-[7px] ring-1 ring-white/[0.06]">
           <div className="relative overflow-hidden rounded-[2.4rem] bg-white">
@@ -104,7 +104,7 @@ function Phone({ tab, onTab }: { tab: TabId; onTab: (t: TabId) => void }) {
 
             {/* Dynamic island */}
             <div className="absolute left-1/2 top-2.5 z-30 flex h-[26px] w-[90px] -translate-x-1/2 items-center justify-end rounded-full bg-black pr-2.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#1c2b33] ring-1 ring-white/10" />
+              <span className="h-1.5 w-1.5 rounded-full bg-[#1B252E] ring-1 ring-white/10" />
             </div>
 
             {/* Status bar */}
@@ -116,7 +116,7 @@ function Phone({ tab, onTab }: { tab: TabId; onTab: (t: TabId) => void }) {
           {/* App header */}
           <div className="flex items-center justify-between border-b border-ink/5 px-4 py-3">
             <div className="flex items-center gap-2">
-              <div className="flex h-6 w-6 items-center justify-center rounded-md bg-teal text-[10px] font-bold text-navy-900">
+              <div className="flex h-6 w-6 items-center justify-center rounded-md bg-accent text-[10px] font-bold text-white">
                 C
               </div>
               <span className="text-[12px] font-semibold text-ink">
@@ -129,7 +129,7 @@ function Phone({ tab, onTab }: { tab: TabId; onTab: (t: TabId) => void }) {
           </div>
 
           {/* Tela ativa */}
-          <div className="h-[420px] overflow-hidden bg-[#FAFAFB]">
+          <div className="h-[420px] overflow-hidden bg-mist-light">
             {tab === 'agenda' && <AgendaScreen />}
             {tab === 'pacientes' && <PacientesScreen />}
             {tab === 'prontuario' && <ProntuarioScreen />}
@@ -152,12 +152,12 @@ function Phone({ tab, onTab }: { tab: TabId; onTab: (t: TabId) => void }) {
                   <Icon
                     name={t.icon}
                     className={`h-[18px] w-[18px] transition ${
-                      active ? 'text-teal' : 'text-ink-500/45'
+                      active ? 'text-accent' : 'text-ink-400/85'
                     }`}
                   />
                   <span
                     className={`text-[9px] font-medium transition ${
-                      active ? 'text-teal' : 'text-ink-500/45'
+                      active ? 'text-accent' : 'text-ink-400/85'
                     }`}
                   >
                     {t.label}
@@ -215,10 +215,10 @@ function StatusIcons() {
 }
 
 const appts = [
-  { time: '08:00', name: 'Maria Santos', proc: 'Consulta · Dra. Helena', tone: 'teal' },
+  { time: '08:00', name: 'Maria Santos', proc: 'Consulta · Dra. Helena', tone: 'accent' },
   { time: '09:30', name: 'João Pereira', proc: 'Retorno · Dr. Rafael', tone: 'sky' },
   { time: '11:00', name: 'Ana Lima', proc: 'Avaliação · Dra. Carla', tone: 'amber' },
-  { time: '14:00', name: 'Carlos Souza', proc: 'Procedimento · Dra. Helena', tone: 'teal' },
+  { time: '14:00', name: 'Carlos Souza', proc: 'Procedimento · Dra. Helena', tone: 'accent' },
 ]
 
 function AgendaScreen() {
@@ -238,7 +238,7 @@ function AgendaScreen() {
               type="button"
               onClick={() => setSelected(on ? null : a.time)}
               className={`flex w-full items-center gap-2.5 rounded-xl border bg-white px-3 py-2.5 text-left transition active:scale-[0.99] ${
-                on ? 'border-teal/50 ring-1 ring-teal/30' : 'border-ink/5'
+                on ? 'border-accent/50 ring-1 ring-accent/30' : 'border-ink/5'
               }`}
             >
               <span className="w-9 text-[10px] font-medium text-ink-500">
@@ -251,7 +251,7 @@ function AgendaScreen() {
                 </p>
                 <p className="truncate text-[9.5px] text-ink-500">{a.proc}</p>
               </div>
-              {on && <Icon name="check" className="h-3.5 w-3.5 text-teal" />}
+              {on && <Icon name="check" className="h-3.5 w-3.5 text-accent" />}
             </button>
           )
         })}
@@ -272,8 +272,8 @@ function PacientesScreen() {
   return (
     <div className="px-4 pt-4">
       <div className="flex items-center gap-2 rounded-xl bg-white px-3 py-2 ring-1 ring-ink/5">
-        <Icon name="search" className="h-3.5 w-3.5 text-ink-500/60" />
-        <span className="text-[11px] text-ink-500/60">Buscar paciente</span>
+        <Icon name="search" className="h-3.5 w-3.5 text-ink-400" />
+        <span className="text-[11px] text-ink-400">Buscar paciente</span>
       </div>
       <div className="mt-3 space-y-1.5">
         {patients.map((p) => (
@@ -281,7 +281,7 @@ function PacientesScreen() {
             key={p.name}
             className="flex items-center gap-3 rounded-xl bg-white px-3 py-2.5 ring-1 ring-ink/5"
           >
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-teal/10 text-[10px] font-semibold text-teal-dark">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent/10 text-[10px] font-semibold text-accent-dark">
               {p.init}
             </div>
             <div className="min-w-0 flex-1">
@@ -290,7 +290,7 @@ function PacientesScreen() {
               </p>
               <p className="text-[9.5px] text-ink-500">{p.tag}</p>
             </div>
-            <Icon name="link" className="h-3.5 w-3.5 text-ink-500/30" />
+            <Icon name="link" className="h-3.5 w-3.5 text-ink-400/60" />
           </div>
         ))}
       </div>
@@ -325,7 +325,7 @@ function ProntuarioScreen() {
             <div className="flex flex-col items-center">
               <span
                 className={`mt-1 h-2 w-2 rounded-full ${
-                  t.on ? 'bg-teal' : 'bg-ink/20'
+                  t.on ? 'bg-accent' : 'bg-ink/20'
                 }`}
               />
               {i < timeline.length - 1 && (
@@ -364,7 +364,7 @@ function FinanceiroScreen() {
             <span
               key={i}
               className={`flex-1 rounded-sm ${
-                i === bars.length - 1 ? 'bg-teal' : 'bg-white/15'
+                i === bars.length - 1 ? 'bg-accent' : 'bg-white/15'
               }`}
               style={{ height: `${h * 0.32}px` }}
             />
