@@ -19,13 +19,13 @@ const serif = Instrument_Serif({
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: 'clinni pro — Gestão para clínicas e consultórios',
+  title: 'ClinniPro — Gestão para clínicas e consultórios',
   description: site.description,
   openGraph: {
-    title: 'clinni pro — Gestão para clínicas e consultórios',
+    title: 'ClinniPro — Gestão para clínicas e consultórios',
     description: site.description,
     url: site.url,
-    siteName: 'clinni pro',
+    siteName: 'ClinniPro',
     locale: 'pt_BR',
     type: 'website',
   },

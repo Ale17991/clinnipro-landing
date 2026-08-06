@@ -18,7 +18,7 @@ export function CtaFinal() {
           </h2>
 
           <p className="mx-auto mt-7 max-w-lg text-[16px] leading-relaxed text-ink-500">
-            Mostramos a clinni pro com os dados da sua clínica — convênios,
+            Mostramos a ClinniPro com os dados da sua clínica — convênios,
             profissionais, procedimentos. Sem compromisso.
           </p>
 

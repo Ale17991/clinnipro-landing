@@ -4,7 +4,7 @@ type LogoProps = {
 }
 
 /**
- * Wordmark clinni pro.
+ * Wordmark ClinniPro.
  *
  * Inline (e nao <Image>) de proposito: usa currentColor, entao herda a cor de
  * texto do contexto e serve tanto fundo claro quanto escuro com um arquivo so.

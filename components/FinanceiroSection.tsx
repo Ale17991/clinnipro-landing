@@ -55,7 +55,7 @@ export function FinanceiroSection() {
           </h2>
           <p className="mt-6 max-w-md text-[16px] leading-relaxed text-white/65">
             Comissão por procedimento, taxa por convênio, retenção de imposto e
-            parcelas — tudo somado pela clinni pro. Você confere e libera.
+            parcelas — tudo somado pela ClinniPro. Você confere e libera.
           </p>
         </div>
       </div>

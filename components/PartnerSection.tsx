@@ -1,7 +1,7 @@
 import { partnerPillars } from '@/lib/site'
 import { Icon } from './Icon'
 
-// Seção "manifesto" — afirma o posicionamento de marca: a clinni pro não é só
+// Seção "manifesto" — afirma o posicionamento de marca: a ClinniPro não é só
 // um sistema, é o parceiro que resolve a clínica. Fundo escuro para dar peso e
 // quebrar o ritmo das seções claras de produto.
 export function PartnerSection() {
@@ -20,7 +20,7 @@ export function PartnerSection() {
             .
           </h2>
           <p className="mt-6 text-[15px] leading-relaxed text-white/70">
-            Software resolve metade — a outra metade é gente. A clinni pro não é
+            Software resolve metade — a outra metade é gente. A ClinniPro não é
             só a plataforma: é o time que implanta, ajusta e cria as ferramentas
             que a sua clínica precisa. O melhor amigo de quem cuida de pessoas.
           </p>

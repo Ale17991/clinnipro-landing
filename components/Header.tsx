@@ -6,7 +6,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-ink/5 bg-white/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-content items-center justify-between px-6 py-4 sm:px-10">
-        <a href="#top" className="flex items-center" aria-label="clinni pro">
+        <a href="#top" className="flex items-center" aria-label="ClinniPro">
           <Logo className="h-5 w-auto text-ink" />
         </a>
 

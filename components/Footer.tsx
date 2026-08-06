@@ -51,7 +51,7 @@ export function Footer() {
 
         <div className="mt-16 flex flex-col gap-2 border-t border-ink/5 pt-6 text-[12px] text-ink-500 sm:flex-row sm:items-center sm:justify-between">
           <span>{site.domain}</span>
-          <span>© {new Date().getFullYear()} clinni pro</span>
+          <span>© {new Date().getFullYear()} ClinniPro</span>
         </div>
       </div>
     </footer>

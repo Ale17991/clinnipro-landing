@@ -1,9 +1,9 @@
-// Configuração e conteúdo da landing da clinni pro.
-// WhatsApp da clinni pro (DDI 55 + DDD 27 + número, só dígitos).
+// Configuração e conteúdo da landing da ClinniPro.
+// WhatsApp da ClinniPro (DDI 55 + DDD 27 + número, só dígitos).
 export const WHATSAPP_NUMBER = '5527988793222'
 
 export const site = {
-  name: 'clinni pro',
+  name: 'ClinniPro',
   domain: 'clinnipro.com.br',
   url: 'https://clinnipro.com.br',
   appUrl: 'https://app.clinnipro.com.br',
@@ -11,7 +11,7 @@ export const site = {
     'Mais que um sistema de gestão para clínicas: um parceiro que implanta, se adapta e cria as ferramentas que a sua clínica precisa. Agenda, prontuário, financeiro e agendamento online num só lugar.',
 }
 
-const WHATSAPP_MESSAGE = 'Olá! Quero conhecer a clinni pro.'
+const WHATSAPP_MESSAGE = 'Olá! Quero conhecer a ClinniPro.'
 export const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
   WHATSAPP_MESSAGE,
 )}`
@@ -383,7 +383,7 @@ export const planOptions = [
 // >>> TROCAR: e-mail real para pedidos de titular (acesso/correção/exclusão).
 export const privacyEmail = 'privacidade@clinnipro.com.br'
 export const lgpdNotice =
-  'Ao enviar, você concorda que a clinni pro use os dados informados (nome, e-mail e telefone) para entrar em contato sobre a demonstração, conforme a LGPD (Lei nº 13.709/2018). Não vendemos nem compartilhamos seus dados para publicidade.'
+  'Ao enviar, você concorda que a ClinniPro use os dados informados (nome, e-mail e telefone) para entrar em contato sobre a demonstração, conforme a LGPD (Lei nº 13.709/2018). Não vendemos nem compartilhamos seus dados para publicidade.'
 
 // FAQ — curto e direto.
 export const faqs = [
@@ -397,7 +397,7 @@ export const faqs = [
   },
   {
     q: 'Como é o repasse no fim do mês?',
-    a: 'A clinni pro consolida o realizado, aplica a comissão vigente e tira um snapshot. Bruto, taxa e líquido por consulta — visíveis ao médico.',
+    a: 'A ClinniPro consolida o realizado, aplica a comissão vigente e tira um snapshot. Bruto, taxa e líquido por consulta — visíveis ao médico.',
   },
   {
     q: 'Meus dados estão seguros? E a LGPD?',

@@ -6,9 +6,9 @@ import { LeadForm } from './LeadForm'
 import { site } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'Demonstração · clinni pro',
+  title: 'Demonstração · ClinniPro',
   description:
-    'Trinta minutos com a nossa equipe. Mostramos a clinni pro com os dados da sua clínica — convênios, profissionais, procedimentos.',
+    'Trinta minutos com a nossa equipe. Mostramos a ClinniPro com os dados da sua clínica — convênios, profissionais, procedimentos.',
   robots: { index: false, follow: true },
 }
 
@@ -17,7 +17,7 @@ export default function DemoPage() {
     <div className="min-h-screen bg-white">
       <header className="border-b border-ink/5">
         <div className="mx-auto flex max-w-content items-center justify-between px-6 py-4 sm:px-10">
-          <Link href="/" className="flex items-center" aria-label="clinni pro">
+          <Link href="/" className="flex items-center" aria-label="ClinniPro">
             <Logo className="h-5 w-auto text-ink" />
           </Link>
           <Link
@@ -42,14 +42,14 @@ export default function DemoPage() {
             </span>
           </h1>
           <p className="mt-6 max-w-md text-[16px] leading-relaxed text-ink-500">
-            Mostramos a clinni pro com os dados da sua clínica — convênios,
+            Mostramos a ClinniPro com os dados da sua clínica — convênios,
             profissionais, procedimentos. Sem compromisso, sem cartão.
           </p>
 
           <ol className="mt-10 space-y-5">
             {[
               ['01', 'Conversa de 10 min sobre a sua rotina'],
-              ['02', 'Configuramos a clinni pro com seus dados'],
+              ['02', 'Configuramos a ClinniPro com seus dados'],
               ['03', 'Você atende um paciente de teste — ponta a ponta'],
               ['04', 'Decide com tudo na mão'],
             ].map(([n, t]) => (
@@ -76,7 +76,7 @@ export default function DemoPage() {
       </main>
 
       <footer className="border-t border-ink/5 py-8 text-center text-[12px] text-ink-500">
-        © {new Date().getFullYear()} clinni pro · {site.domain}
+        © {new Date().getFullYear()} ClinniPro · {site.domain}
       </footer>
     </div>
   )
