@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Suspense } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
+import { Logo } from '@/components/Logo'
 import { LeadForm } from './LeadForm'
 import { site } from '@/lib/site'
 
@@ -18,14 +18,7 @@ export default function DemoPage() {
       <header className="border-b border-ink/5">
         <div className="mx-auto flex max-w-content items-center justify-between px-6 py-4 sm:px-10">
           <Link href="/" className="flex items-center" aria-label="clinni pro">
-            <Image
-              src="/logo-clinnipro-dark.png"
-              alt="clinni pro"
-              width={150}
-              height={42}
-              className="h-7 w-auto"
-              priority
-            />
+            <Logo className="h-5 w-auto text-ink" />
           </Link>
           <Link
             href="/"

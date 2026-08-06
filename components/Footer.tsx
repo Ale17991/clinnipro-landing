@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import { Logo } from './Logo'
 import { site, whatsappUrl } from '@/lib/site'
 
 const links: { label: string; href: string; external?: boolean }[][] = [
@@ -25,13 +25,7 @@ export function Footer() {
       <div className="mx-auto max-w-content px-6 py-20 sm:px-10">
         <div className="grid gap-12 md:grid-cols-[1.6fr_1fr_1fr_1fr]">
           <div>
-            <Image
-              src="/logo-clinnipro-dark.png"
-              alt="clinni pro"
-              width={150}
-              height={42}
-              className="h-7 w-auto"
-            />
+            <Logo className="h-5 w-auto text-ink" />
             <p className="mt-5 max-w-xs text-[14px] leading-relaxed text-ink-500">
               Mais que um sistema: o parceiro da sua clínica. Feito no Brasil,
               para clínicas e consultórios.

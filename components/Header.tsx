@@ -1,5 +1,5 @@
-import Image from 'next/image'
 import Link from 'next/link'
+import { Logo } from './Logo'
 import { nav, site } from '@/lib/site'
 
 export function Header() {
@@ -7,14 +7,7 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-ink/5 bg-white/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-content items-center justify-between px-6 py-4 sm:px-10">
         <a href="#top" className="flex items-center" aria-label="clinni pro">
-          <Image
-            src="/logo-clinnipro-dark.png"
-            alt="clinni pro"
-            width={150}
-            height={42}
-            priority
-            className="h-7 w-auto"
-          />
+          <Logo className="h-5 w-auto text-ink" />
         </a>
 
         <nav className="hidden items-center gap-10 md:flex">
