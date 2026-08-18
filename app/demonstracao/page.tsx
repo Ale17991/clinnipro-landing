@@ -63,8 +63,16 @@ export default function DemoPage() {
           </ol>
 
           <p className="mt-12 text-[13px] text-ink-500">
-            Ao enviar, você concorda com nossa Política de Privacidade.
-            Tratamos seus dados conforme a LGPD.
+            Ao enviar, você concorda com nossa{' '}
+            <a
+              href={`${site.appUrl}/politica-de-privacidade`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 transition hover:text-ink"
+            >
+              Política de Privacidade
+            </a>
+            . Tratamos seus dados conforme a LGPD.
           </p>
         </section>
 

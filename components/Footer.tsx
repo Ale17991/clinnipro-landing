@@ -11,6 +11,14 @@ const links: { label: string; href: string; external?: boolean }[][] = [
   [
     { label: 'Segurança', href: '#seguranca' },
     { label: 'Perguntas', href: '#faq' },
+    // A política mora no APP, não aqui: é o app que pede os dados, e o domínio
+    // dele é o mesmo do OAuth do Google. Uma cópia na landing seria uma segunda
+    // versão do mesmo documento, condenada a divergir.
+    {
+      label: 'Privacidade',
+      href: `${site.appUrl}/politica-de-privacidade`,
+      external: true,
+    },
   ],
   [
     { label: 'Demonstração', href: '/demonstracao' },
