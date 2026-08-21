@@ -9,6 +9,7 @@ import {
   pricingNote,
   pricingFootnote,
   annualDiscount,
+  implementation,
 } from '@/lib/site'
 
 // "1234" -> "1.234"
@@ -94,7 +95,7 @@ export function PricingSection() {
                   <span
                     className={`text-[13px] ${plan.featured ? 'text-white/55' : 'text-ink-500'}`}
                   >
-                    /prof · mês
+                    {plan.unit}
                   </span>
                 </div>
 
@@ -158,7 +159,7 @@ export function PricingSection() {
                   }`}
                 >
                   {annual
-                    ? `R$ ${formatBRL(annualTotal)}/ano por profissional`
+                    ? `R$ ${formatBRL(annualTotal)}/ano ${plan.annualUnit}`
                     : `ou R$ ${formatBRL(
                         Math.round(plan.price * 12 * (1 - annualDiscount)),
                       )}/ano no plano anual`}
@@ -200,6 +201,38 @@ export function PricingSection() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Implantação — cobrada à parte, por escopo. */}
+        <div className="mt-16 rounded-2xl border border-ink/10 bg-white p-8 sm:p-10">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] lg:gap-16">
+            <div>
+              <p className="text-[12px] font-medium uppercase tracking-[0.18em] text-accent">
+                {implementation.eyebrow}
+              </p>
+              <h3 className="display mt-3 text-2xl font-medium tracking-tight text-ink sm:text-[1.75rem]">
+                {implementation.title}
+              </h3>
+              <p className="mt-4 text-[14px] leading-relaxed text-ink-500">
+                {implementation.desc}
+              </p>
+            </div>
+
+            <dl className="space-y-6 lg:border-l lg:border-ink/10 lg:pl-16">
+              {implementation.items.map((item) => (
+                <div key={item.title}>
+                  <dt className="flex items-center gap-2.5 text-[15px] font-medium text-ink">
+                    <Icon name="check" className="h-4 w-4 shrink-0 text-accent" />
+                    {item.title}
+                  </dt>
+                  <dd className="mt-2 text-[13px] leading-relaxed text-ink-500">
+                    {item.desc}
+                  </dd>
+                </div>
+              ))}
+              <p className="text-[12px] text-ink-500">{implementation.footnote}</p>
+            </dl>
           </div>
         </div>
       </div>

@@ -29,7 +29,7 @@ export const nav = [
 export const partnerPillars = [
   {
     title: 'Implantação assistida',
-    desc: 'Migramos seus dados e deixamos tudo pronto pra usar — você não começa do zero.',
+    desc: 'Migramos seus dados e deixamos tudo pronto pra usar. Orçada conforme a demanda de cada clínica.',
     icon: 'database',
   },
   {
@@ -257,7 +257,7 @@ export const customModule = {
 
 // Planos — preço por profissional de saúde/mês.
 export const pricingNote =
-  'Cobrança por profissional de saúde · recepção e admin gratuitos · sem fidelidade no mensal.'
+  'Essencial e Pro cobram por profissional de saúde · Clínica é pacote fechado com até 4 profissionais · recepção e admin gratuitos · sem fidelidade no mensal.'
 
 // Desconto do plano anual (mensal × 12 × (1 − desconto)).
 export const annualDiscount = 0.17
@@ -267,6 +267,8 @@ export const plans = [
     id: 'essencial',
     name: 'Essencial',
     price: 99,
+    unit: '/prof · mês',
+    annualUnit: 'por profissional',
     tagline: 'Consultório solo / início',
     featured: false,
     badge: null,
@@ -285,6 +287,8 @@ export const plans = [
     id: 'pro',
     name: 'Pro',
     price: 169,
+    unit: '/prof · mês',
+    annualUnit: 'por profissional',
     tagline: 'Clínica em crescimento',
     featured: true,
     badge: 'Mais popular',
@@ -300,12 +304,15 @@ export const plans = [
   {
     id: 'clinica',
     name: 'Clínica',
-    price: 259,
-    tagline: 'Multiespecialidade / rede',
+    price: 829,
+    unit: '/mês',
+    annualUnit: 'para até 4 profissionais',
+    tagline: 'Até 4 profissionais · multiespecialidade',
     featured: false,
     badge: null,
     inherits: 'Tudo do Pro, mais:',
     features: [
+      'Até 4 profissionais de saúde inclusos',
       'Multiunidade (multi-clínica)',
       'BI avançado',
       'Auditoria e logs avançados',
@@ -348,6 +355,25 @@ export const addons = [
     icon: 'link',
   },
 ] as const
+
+// Implantação — cobrada à parte da mensalidade e orçada pelo escopo real do
+// trabalho (volume de dados, integrações, treinamento, customizações).
+export const implementation = {
+  eyebrow: 'Implantação',
+  title: 'Cobrada pela demanda',
+  desc: 'A implantação não está inclusa na mensalidade: ela é orçada caso a caso, conforme a demanda que a sua clínica precisa que a gente execute. Clínica que só precisa importar a base e começar paga pouco; operação com histórico grande, integrações e fluxo sob medida tem escopo maior. Você recebe o orçamento fechado antes de contratar — sem cobrança surpresa depois.',
+  items: [
+    {
+      title: 'O que entra no orçamento',
+      desc: 'Migração e higienização da base, configuração de agenda, profissionais e financeiro, integrações, treinamento da equipe e ajustes sob medida.',
+    },
+    {
+      title: 'Como definimos o valor',
+      desc: 'Levantamos o escopo na demonstração — volume de dados, sistema de origem, número de unidades e customizações — e enviamos uma proposta fechada.',
+    },
+  ],
+  footnote: 'Escopo e valor definidos na demonstração, antes da contratação.',
+} as const
 
 // Opções do select "tipo de clínica" no formulário de demonstração.
 export const clinicTypes = [
@@ -409,6 +435,10 @@ export const faqs = [
   },
   {
     q: 'Consigo migrar pacientes do sistema atual?',
-    a: 'Nossa equipe importa pacientes, planos, profissionais e agenda futura a partir de planilha ou exportação. Faz parte do onboarding.',
+    a: 'Sim. Nossa equipe importa pacientes, planos, profissionais e agenda futura a partir de planilha ou exportação. A migração faz parte da implantação, que é orçada conforme a demanda.',
+  },
+  {
+    q: 'Quanto custa a implantação?',
+    a: 'A implantação é cobrada à parte da mensalidade e orçada pela demanda a ser realizada — volume de dados a migrar, integrações, treinamento da equipe e customizações. Levantamos o escopo na demonstração e enviamos uma proposta fechada antes da contratação.',
   },
 ]
