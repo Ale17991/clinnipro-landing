@@ -17,10 +17,10 @@ export const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURICom
 )}`
 
 export const nav = [
-  { label: 'Parceria', href: '#parceria' },
-  { label: 'Sistema', href: '#sistema' },
+  { label: 'Um dia na clínica', href: '#sistema' },
   { label: 'Recursos', href: '#recursos' },
   { label: 'Sob medida', href: '#especialidades' },
+  { label: 'Parceria', href: '#parceria' },
   { label: 'Planos', href: '#planos' },
 ]
 

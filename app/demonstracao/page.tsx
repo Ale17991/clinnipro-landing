@@ -14,8 +14,8 @@ export const metadata: Metadata = {
 
 export default function DemoPage() {
   return (
-    <div className="min-h-screen bg-white">
-      <header className="border-b border-ink/5">
+    <div className="min-h-screen bg-paper">
+      <header className="border-b border-paper-line">
         <div className="mx-auto flex max-w-content items-center justify-between px-6 py-4 sm:px-10">
           <Link href="/" className="flex items-center" aria-label="ClinniPro">
             <Logo className="h-5 w-auto text-ink" />
@@ -31,13 +31,13 @@ export default function DemoPage() {
 
       <main className="mx-auto grid max-w-content gap-16 px-6 py-20 sm:px-10 sm:py-28 lg:grid-cols-[1fr_1.1fr] lg:gap-24 lg:py-32">
         <section className="lg:pt-6">
-          <p className="text-[12px] font-medium uppercase tracking-[0.18em] text-ink-500">
-            Demonstração
+          <p className="stamp text-[9.5px] text-accent-dark">
+            Próximo horário livre
           </p>
-          <h1 className="display mt-4 text-4xl font-medium leading-[1.05] text-ink sm:text-[3rem]">
+          <h1 className="display mt-6 text-4xl font-medium leading-[1.04] text-ink sm:text-[3rem]">
             Uma hora.
             <br />
-            <span className="font-serif italic text-ink-700">
+            <span className="font-serif italic text-navy">
               A clínica configurada.
             </span>
           </h1>
@@ -54,7 +54,7 @@ export default function DemoPage() {
               ['04', 'Decide com tudo na mão'],
             ].map(([n, t]) => (
               <li key={n} className="flex items-start gap-4">
-                <span className="font-serif text-xl italic text-ink-700">
+                <span className="stamp pt-1 text-[11px] text-accent-dark">
                   {n}
                 </span>
                 <span className="text-[15px] leading-relaxed text-ink">{t}</span>
@@ -83,7 +83,7 @@ export default function DemoPage() {
         </section>
       </main>
 
-      <footer className="border-t border-ink/5 py-8 text-center text-[12px] text-ink-500">
+      <footer className="stamp border-t border-paper-line py-8 text-center text-[9.5px] text-ink-500">
         © {new Date().getFullYear()} ClinniPro · {site.domain}
       </footer>
     </div>

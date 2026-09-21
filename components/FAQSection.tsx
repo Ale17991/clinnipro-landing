@@ -2,15 +2,14 @@ import { faqs } from '@/lib/site'
 
 export function FAQSection() {
   return (
-    <section id="faq" className="bg-mist-light py-28 sm:py-36">
+    <section id="faq" className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-content px-6 sm:px-10">
         <div className="grid gap-16 lg:grid-cols-[1fr_1.6fr] lg:gap-24">
           <div className="lg:sticky lg:top-32 lg:self-start">
-            <p className="text-[12px] font-medium uppercase tracking-[0.18em] text-ink-500">
-              FAQ
-            </p>
-            <h2 className="display mt-4 text-4xl font-medium leading-[1.1] text-ink sm:text-[2.75rem]">
-              Perguntas <span className="font-serif italic text-ink-700">frequentes</span>.
+            <p className="stamp text-[9.5px] text-ink-500">Antes de perguntar</p>
+            <h2 className="display mt-6 text-[2rem] font-medium leading-[1.06] text-ink sm:text-[2.6rem]">
+              O que toda clínica{' '}
+              <span className="text-accent-dark">pergunta</span>.
             </h2>
           </div>
 

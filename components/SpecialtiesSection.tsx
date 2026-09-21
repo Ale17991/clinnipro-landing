@@ -8,16 +8,17 @@ export function SpecialtiesSection() {
   return (
     <section
       id="especialidades"
-      className="border-t border-ink/5 bg-mist-light py-28 sm:py-36"
+      className="bg-paper py-24 sm:py-32"
     >
       <div className="mx-auto max-w-content px-6 sm:px-10">
         <div className="max-w-2xl">
-          <p className="text-[12px] font-medium uppercase tracking-[0.18em] text-ink-500">
+          <p className="stamp text-[9.5px] text-ink-500">
             A parte mais importante
           </p>
-          <h2 className="display mt-4 text-4xl font-medium leading-[1.1] text-ink sm:text-5xl">
-            O que falta na sua clínica,{' '}
-            <span className="font-serif italic text-ink-700">a gente cria</span>.
+          <h2 className="display mt-6 text-[2rem] font-medium leading-[1.06] text-ink sm:text-[2.7rem]">
+            O que falta na sua clínica,
+            <br />
+            <span className="text-accent-dark">a gente cria</span>.
           </h2>
           <p className="mt-6 text-[15px] leading-relaxed text-ink-500">
             Agenda e prontuário são só o começo. Quando a sua especialidade
@@ -33,13 +34,13 @@ export function SpecialtiesSection() {
           {customProof.map((m) => (
             <article
               key={m.title}
-              className="flex flex-col rounded-2xl bg-white p-6 ring-1 ring-ink/5"
+              className="flex flex-col rounded-2xl bg-white p-6 ring-1 ring-ink/[0.06] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_-24px_rgba(20,29,35,0.35)]"
             >
               <div className="flex items-center justify-between">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10">
                   <Icon name={m.icon} className="h-5 w-5 text-accent" />
                 </div>
-                <span className="rounded-full bg-ink/[0.04] px-2.5 py-1 text-[11px] font-medium text-ink-500">
+                <span className="stamp rounded-full bg-ink/[0.04] px-2.5 py-1 text-[8.5px] text-ink-500">
                   {m.tag}
                 </span>
               </div>
@@ -54,11 +55,11 @@ export function SpecialtiesSection() {
         </div>
 
         {/* Destaque: módulo sob medida */}
-        <div className="mt-8 flex flex-col gap-5 rounded-2xl bg-ink p-8 text-white sm:flex-row sm:items-center sm:justify-between sm:p-10">
+        <div className="mt-8 flex flex-col gap-5 rounded-2xl bg-navy p-8 text-white sm:flex-row sm:items-center sm:justify-between sm:p-10">
           <div className="max-w-xl">
             <div className="flex items-center gap-2.5">
               <Icon name="sparkle" className="h-4 w-4 text-accent-light" />
-              <h3 className="text-[15px] font-medium uppercase tracking-[0.12em] text-white/70">
+              <h3 className="stamp text-[10.5px] font-medium text-white/70">
                 {customModule.title}
               </h3>
             </div>
@@ -77,8 +78,9 @@ export function SpecialtiesSection() {
           </a>
         </div>
 
-        <p className="mt-12 text-[13px] leading-relaxed text-ink-500">
-          Usado por: <span className="text-ink-700">{professions}</span>.
+        <p className="mt-12 border-t border-paper-line pt-7 text-[13px] leading-relaxed text-ink-500">
+          <span className="stamp text-[9px]">Usado por</span>{' '}
+          <span className="text-ink-700">{professions}</span>.
         </p>
       </div>
     </section>

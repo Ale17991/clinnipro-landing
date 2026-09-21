@@ -21,14 +21,13 @@ export function PricingSection() {
   const [annual, setAnnual] = useState(false)
 
   return (
-    <section id="planos" className="border-t border-ink/5 bg-mist-light py-28 sm:py-36">
+    <section id="planos" className="bg-paper py-24 sm:py-32">
       <div className="mx-auto max-w-content px-6 sm:px-10">
         <div className="max-w-2xl">
-          <p className="text-[12px] font-medium uppercase tracking-[0.18em] text-ink-500">
-            Planos
-          </p>
-          <h2 className="display mt-4 text-4xl font-medium leading-[1.1] text-ink sm:text-[2.75rem]">
-            Preço que cresce <span className="font-serif italic text-ink-700">com a clínica</span>.
+          <p className="stamp text-[9.5px] text-ink-500">Planos</p>
+          <h2 className="display mt-6 text-[2rem] font-medium leading-[1.06] text-ink sm:text-[2.7rem]">
+            Preço que cresce{' '}
+            <span className="text-accent-dark">com a clínica</span>.
           </h2>
           <p className="mt-6 text-[15px] leading-relaxed text-ink-500">{pricingNote}</p>
         </div>
@@ -40,7 +39,7 @@ export function PricingSection() {
             onClick={() => setAnnual(false)}
             aria-pressed={!annual}
             className={`rounded-full px-4 py-2 text-[13px] font-medium transition ${
-              !annual ? 'bg-ink text-white' : 'text-ink-500 hover:text-ink'
+              !annual ? 'bg-navy text-white' : 'text-ink-500 hover:text-ink'
             }`}
           >
             Mensal
@@ -50,7 +49,7 @@ export function PricingSection() {
             onClick={() => setAnnual(true)}
             aria-pressed={annual}
             className={`rounded-full px-4 py-2 text-[13px] font-medium transition ${
-              annual ? 'bg-ink text-white' : 'text-ink-500 hover:text-ink'
+              annual ? 'bg-navy text-white' : 'text-ink-500 hover:text-ink'
             }`}
           >
             Anual
@@ -70,18 +69,18 @@ export function PricingSection() {
                 key={plan.id}
                 className={
                   plan.featured
-                    ? 'relative rounded-2xl bg-ink p-8 text-white shadow-[0_30px_80px_-30px_rgba(20,29,35,0.55)] ring-1 ring-ink lg:-mt-4 lg:pb-10'
-                    : 'relative rounded-2xl border border-ink/10 bg-white p-8 text-ink'
+                    ? 'relative rounded-2xl bg-navy p-8 text-white shadow-[0_30px_80px_-30px_rgba(0,56,131,0.5)] ring-1 ring-navy lg:-mt-4 lg:pb-10'
+                    : 'relative rounded-2xl border border-paper-line bg-white p-8 text-ink'
                 }
               >
                 {plan.badge && (
-                  <span className="absolute -top-3 left-8 rounded-full bg-accent px-3 py-1 text-[11px] font-medium uppercase tracking-[0.12em] text-white">
+                  <span className="stamp absolute -top-3 left-8 rounded-full bg-accent px-3 py-1 text-[9px] font-medium text-white">
                     {plan.badge}
                   </span>
                 )}
 
                 <h3
-                  className={`text-[15px] font-medium uppercase tracking-[0.14em] ${
+                  className={`stamp text-[10.5px] font-medium ${
                     plan.featured ? 'text-white/70' : 'text-ink-500'
                   }`}
                 >
@@ -112,7 +111,7 @@ export function PricingSection() {
                   className={
                     plan.featured
                       ? 'mt-7 flex items-center justify-center rounded-full bg-accent px-5 py-3 text-[14px] font-medium text-white transition hover:bg-accent-dark'
-                      : 'mt-7 flex items-center justify-center rounded-full bg-ink px-5 py-3 text-[14px] font-medium text-white transition hover:bg-ink-900'
+                      : 'mt-7 flex items-center justify-center rounded-full bg-navy px-5 py-3 text-[14px] font-medium text-white transition hover:bg-navy-deep'
                   }
                 >
                   Começar
@@ -138,7 +137,7 @@ export function PricingSection() {
                         <Icon
                           name="check"
                           className={`mt-0.5 h-4 w-4 shrink-0 ${
-                            plan.featured ? 'text-accent-light' : 'text-accent'
+                            plan.featured ? 'text-white/40' : 'text-ink-400'
                           }`}
                         />
                         <span
@@ -223,7 +222,7 @@ export function PricingSection() {
               {implementation.items.map((item) => (
                 <div key={item.title}>
                   <dt className="flex items-center gap-2.5 text-[15px] font-medium text-ink">
-                    <Icon name="check" className="h-4 w-4 shrink-0 text-accent" />
+                    <Icon name="check" className="h-4 w-4 shrink-0 text-ink-400" />
                     {item.title}
                   </dt>
                   <dd className="mt-2 text-[13px] leading-relaxed text-ink-500">

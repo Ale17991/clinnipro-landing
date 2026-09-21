@@ -19,7 +19,7 @@ export function BookingMockup() {
     <div className="relative">
       <div className="relative overflow-hidden rounded-xl bg-white shadow-[0_24px_60px_-24px_rgba(20,29,35,0.18),0_0_0_1px_rgba(20,29,35,0.06)]">
         <div className="bg-gradient-to-b from-mist-light to-white p-8">
-          <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-ink-500">
+          <p className="stamp text-[9px] text-ink-500">
             Clínica Bem-Estar
           </p>
           <p className="display mt-2 text-2xl font-medium text-ink">
@@ -32,7 +32,7 @@ export function BookingMockup() {
             <Row label="Data" value="Quarta, 28 de maio" />
           </div>
 
-          <p className="mt-8 text-[11px] font-medium uppercase tracking-[0.14em] text-ink-500">
+          <p className="stamp mt-8 text-[9px] text-ink-500">
             Horários
           </p>
           <div className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-6">
@@ -49,7 +49,7 @@ export function BookingMockup() {
                   }}
                   className={`rounded-md py-2 text-center text-[12px] font-medium transition ${
                     isSelected
-                      ? 'bg-ink text-white'
+                      ? 'bg-navy text-white'
                       : s.taken
                         ? 'cursor-not-allowed bg-ink/5 text-ink-400/80 line-through'
                         : 'border border-ink/10 bg-white text-ink hover:border-accent hover:text-accent-dark'
@@ -65,7 +65,7 @@ export function BookingMockup() {
             type="button"
             onClick={() => setConfirmed(true)}
             className={`mt-8 flex w-full items-center justify-center gap-2 rounded-full py-3 text-[13px] font-medium text-white transition ${
-              confirmed ? 'bg-accent' : 'bg-ink hover:bg-ink-900'
+              confirmed ? 'bg-accent' : 'bg-navy hover:bg-navy-deep'
             }`}
           >
             {confirmed ? (

@@ -4,13 +4,13 @@ import { nav, site } from '@/lib/site'
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-ink/5 bg-white/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-paper-line/70 bg-paper/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-content items-center justify-between px-6 py-4 sm:px-10">
         <a href="#top" className="flex items-center" aria-label="ClinniPro">
           <Logo className="h-5 w-auto text-ink" />
         </a>
 
-        <nav className="hidden items-center gap-10 md:flex">
+        <nav className="hidden items-center gap-8 lg:flex">
           {nav.map((item) => (
             <a
               key={item.href}
@@ -31,7 +31,7 @@ export function Header() {
           </a>
           <Link
             href="/demonstracao"
-            className="rounded-full bg-ink px-5 py-2 text-[13px] font-medium text-white transition hover:bg-ink-900"
+            className="rounded-full bg-navy px-5 py-2 text-[13px] font-medium text-white transition hover:bg-navy-deep"
           >
             Demonstração
           </Link>

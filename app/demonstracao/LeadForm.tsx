@@ -148,7 +148,7 @@ export function LeadForm() {
       {/* Cabeçalho de progresso */}
       <div className="mb-7">
         <div className="flex items-baseline justify-between">
-          <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-ink-500">
+          <p className="stamp text-[9.5px] text-ink-500">
             {steps[step].title}
           </p>
           <span className="text-[12px] font-medium text-ink-500">
@@ -253,7 +253,7 @@ export function LeadForm() {
         <button
           type="submit"
           disabled={state === 'submitting'}
-          className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-ink px-7 py-3.5 text-[14px] font-medium text-white transition hover:bg-ink-900 disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-navy px-7 py-3.5 text-[14px] font-medium text-white transition hover:bg-navy-deep disabled:cursor-not-allowed disabled:opacity-60"
         >
           {state === 'submitting'
             ? 'Enviando…'

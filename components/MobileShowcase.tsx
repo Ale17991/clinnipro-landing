@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Icon } from './Icon'
+import { DaySection, DayHeading } from './DaySection'
 
 // Demonstração do sistema rodando no celular — minimamente interativa:
 // a barra inferior troca de tela e os atendimentos da agenda são selecionáveis.
@@ -26,26 +27,26 @@ export function MobileShowcase() {
   const [tab, setTab] = useState<TabId>('agenda')
 
   return (
-    <section
+    <DaySection
       id="celular"
-      className="border-t border-ink/5 bg-mist-light py-28 sm:py-36"
+      hour="13:10"
+      label={'Entre um\npaciente e outro'}
+      tone="paper"
     >
-      <div className="mx-auto grid max-w-content items-center gap-16 px-6 sm:px-10 lg:grid-cols-2 lg:gap-12">
+      <div className="grid items-center gap-14 lg:grid-cols-[1fr_0.9fr] lg:gap-16">
         {/* Texto */}
         <div className="order-2 max-w-md lg:order-1">
-          <p className="text-[12px] font-medium uppercase tracking-[0.18em] text-ink-500">
-            No celular
-          </p>
-          <h2 className="display mt-4 text-4xl font-medium leading-[1.1] text-ink sm:text-5xl">
-            A clínica inteira cabe{' '}
-            <span className="font-serif italic text-ink-700">no seu bolso</span>.
-          </h2>
-          <p className="mt-6 text-[15px] leading-relaxed text-ink-500">
-            Atenda, agende, abra o prontuário e confira o repasse do celular ou
-            do tablet. Sem instalar nada — só abrir e usar.
+          <DayHeading className="text-ink">
+            No intervalo, a clínica cabe{' '}
+            <span className="text-accent-dark">no bolso</span>.
+          </DayHeading>
+          <p className="mt-6 text-[16px] leading-relaxed text-ink-500">
+            Confirmar o encaixe da tarde, abrir o prontuário do próximo, checar
+            o repasse do mês — do celular, entre um paciente e outro. Sem
+            instalar nada: é só abrir e usar.
           </p>
 
-          <p className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[13px] font-medium text-ink-700 ring-1 ring-ink/10">
+          <p className="stamp mt-8 inline-flex items-center gap-2.5 rounded-full bg-white px-4 py-2 text-[9.5px] text-ink-700 ring-1 ring-ink/[0.08]">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent/60" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
@@ -59,7 +60,7 @@ export function MobileShowcase() {
           <Phone tab={tab} onTab={setTab} />
         </div>
       </div>
-    </section>
+    </DaySection>
   )
 }
 
