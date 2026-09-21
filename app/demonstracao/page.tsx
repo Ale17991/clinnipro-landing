@@ -8,7 +8,7 @@ import { site } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'Demonstração · ClinniPro',
   description:
-    'Trinta minutos com a nossa equipe. Mostramos a ClinniPro com os dados da sua clínica — convênios, profissionais, procedimentos.',
+    'Trinta minutos com a nossa equipe. Mostramos a ClinniPro com os dados da sua clínica: convênios, profissionais, procedimentos.',
   robots: { index: false, follow: true },
 }
 
@@ -42,7 +42,7 @@ export default function DemoPage() {
             </span>
           </h1>
           <p className="mt-6 max-w-md text-[16px] leading-relaxed text-ink-500">
-            Mostramos a ClinniPro com os dados da sua clínica — convênios,
+            Mostramos a ClinniPro com os dados da sua clínica: convênios,
             profissionais, procedimentos. Sem compromisso, sem cartão.
           </p>
 
@@ -50,7 +50,7 @@ export default function DemoPage() {
             {[
               ['01', 'Conversa de 10 min sobre a sua rotina'],
               ['02', 'Configuramos a ClinniPro com seus dados'],
-              ['03', 'Você atende um paciente de teste — ponta a ponta'],
+              ['03', 'Você atende um paciente de teste, ponta a ponta'],
               ['04', 'Decide com tudo na mão'],
             ].map(([n, t]) => (
               <li key={n} className="flex items-start gap-4">

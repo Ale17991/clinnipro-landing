@@ -273,8 +273,8 @@ function Prontuario() {
 
 const tasks = [
   { t: 'Confirmar exames da Maria Santos', who: 'Recepção', status: 'Hoje', tone: 'amber' },
-  { t: 'Enviar orçamento — João Pereira', who: 'Dra. Helena', status: 'Atrasada', tone: 'rose' },
-  { t: 'Retorno de ligação — Ana Lima', who: 'Recepção', status: 'Amanhã', tone: 'sky' },
+  { t: 'Enviar orçamento: João Pereira', who: 'Dra. Helena', status: 'Atrasada', tone: 'rose' },
+  { t: 'Retorno de ligação: Ana Lima', who: 'Recepção', status: 'Amanhã', tone: 'sky' },
   { t: 'Fechar repasse de maio', who: 'Financeiro', status: 'Concluída', tone: 'accent' },
 ]
 const taskTone: Record<string, string> = {

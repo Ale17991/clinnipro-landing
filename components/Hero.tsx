@@ -29,8 +29,8 @@ export function Hero() {
             </h1>
 
             <p className="mt-7 max-w-md text-[17px] leading-relaxed text-ink-500">
-              Agenda, prontuário, financeiro e agendamento online num só lugar —
-              configurado do jeito que a sua clínica trabalha.
+              Agenda, prontuário, financeiro e agendamento online num só
+              lugar, configurado do jeito que a sua clínica trabalha.
             </p>
 
             <div className="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center">

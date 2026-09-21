@@ -21,7 +21,7 @@ export function PublicBookingSection() {
           </DayHeading>
           <p className="mt-6 max-w-md text-[16px] leading-relaxed text-ink-500">
             A clínica ganha um endereço próprio que cai direto na agenda. O
-            paciente escolhe o horário de madrugada, no domingo, no feriado — e
+            paciente escolhe o horário de madrugada, no domingo, no feriado, e
             recebe confirmação e lembrete no WhatsApp sem ninguém digitar nada.
           </p>
 

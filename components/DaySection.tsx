@@ -113,7 +113,7 @@ export function DayClose() {
               className="absolute -left-[13px] top-0 hidden h-px w-[26px] bg-paper-line lg:block"
             />
             <p className="stamp pt-8 text-[9.5px] text-ink-500">
-              19:00 — fim do expediente · nenhuma planilha aberta
+              19:00 · fim do expediente · nenhuma planilha aberta
             </p>
           </div>
         </div>

@@ -41,9 +41,9 @@ export function MobileShowcase() {
             <span className="text-accent-dark">no bolso</span>.
           </DayHeading>
           <p className="mt-6 text-[16px] leading-relaxed text-ink-500">
-            Confirmar o encaixe da tarde, abrir o prontuário do próximo, checar
-            o repasse do mês — do celular, entre um paciente e outro. Sem
-            instalar nada: é só abrir e usar.
+            Confirmar o encaixe da tarde, abrir o prontuário do próximo,
+            checar o repasse do mês. Tudo do celular, entre um paciente e
+            outro. Sem instalar nada: é só abrir e usar.
           </p>
 
           <p className="stamp mt-8 inline-flex items-center gap-2.5 rounded-full bg-white px-4 py-2 text-[9.5px] text-ink-700 ring-1 ring-ink/[0.08]">

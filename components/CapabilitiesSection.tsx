@@ -18,7 +18,7 @@ export function CapabilitiesSection() {
           </h2>
           <p className="mt-6 text-[15px] leading-relaxed text-ink-500">
             Da recepção ao repasse, do prontuário ao convênio. Esta é a lista do
-            que está pronto hoje — e ela só cresce. O que faltar para a sua
+            que está pronto hoje, e ela só cresce. O que faltar para a sua
             clínica, a gente desenvolve.
           </p>
         </div>

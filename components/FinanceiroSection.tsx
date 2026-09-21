@@ -67,9 +67,9 @@ export function FinanceiroSection() {
             <span className="text-accent-light">O mês também.</span>
           </DayHeading>
           <p className="mt-6 max-w-md text-[16px] leading-relaxed text-white/65">
-            Comissão por procedimento, taxa por convênio, retenção de imposto e
-            parcelas — somados enquanto você atendia. Ninguém abre planilha no
-            fim do mês. Você confere e libera.
+            Comissão por procedimento, taxa por convênio, retenção de imposto
+            e parcelas, tudo somado enquanto você atendia. Ninguém abre planilha
+            no fim do mês. Você confere e libera.
           </p>
 
           <ul className="mt-10 max-w-sm divide-y divide-white/10 border-y border-white/10">

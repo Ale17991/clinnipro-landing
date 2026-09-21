@@ -39,7 +39,7 @@ export const partnerPillars = [
   },
   {
     title: 'Suporte que resolve',
-    desc: 'Gente de verdade pra te ajudar quando precisar — sem fila de robô.',
+    desc: 'Gente de verdade pra te ajudar quando precisar, sem fila de robô.',
     icon: 'users',
   },
   {
@@ -53,28 +53,28 @@ export const partnerPillars = [
 export const modules = [
   {
     id: 'agenda',
-    eyebrow: '01 — Operação',
+    eyebrow: '01 · Operação',
     title: 'Agenda',
     desc: 'Dia, semana e mês. Arrastar para remarcar. Conflito impossível.',
     icon: 'calendar',
   },
   {
     id: 'prontuario',
-    eyebrow: '02 — Operação',
+    eyebrow: '02 · Operação',
     title: 'Prontuário',
     desc: 'Anamnese, evolução SOAP e timeline única do paciente.',
     icon: 'clipboard',
   },
   {
     id: 'repasse',
-    eyebrow: '03 — Análise',
+    eyebrow: '03 · Análise',
     title: 'Repasse médico',
     desc: 'Comissão por procedimento. Fechamento mensal automático.',
     icon: 'wallet',
   },
   {
     id: 'agendamento',
-    eyebrow: '04 — Operação',
+    eyebrow: '04 · Operação',
     title: 'Agendamento online',
     desc: 'Link próprio da clínica. Paciente agenda em 90 segundos.',
     icon: 'globe',
@@ -89,7 +89,7 @@ export const compromissos = [
   },
   {
     title: 'Trilha de auditoria',
-    desc: 'Cada ação registrada de forma imutável — quem, quando, o quê.',
+    desc: 'Cada ação registrada de forma imutável: quem, quando, o quê.',
   },
   {
     title: 'Infra brasileira',
@@ -179,7 +179,7 @@ export const capabilityGroups = [
     icon: 'receipt',
     items: [
       'Tabela de preço por convênio',
-      'Faturamento TISS — guias, lotes e glosas',
+      'Faturamento TISS: guias, lotes e glosas',
       'XML assinado em ICP-Brasil',
       'Recebíveis por convênio',
     ],
@@ -252,7 +252,7 @@ export const customProof = [
 // Card de destaque: módulo personalizado.
 export const customModule = {
   title: 'Módulo sob medida',
-  desc: 'Sua especialidade tem um fluxo que nenhum sistema atende? A gente desenha e desenvolve o módulo para ele — sem você trocar de plataforma.',
+  desc: 'Sua especialidade tem um fluxo que nenhum sistema atende? A gente desenha e desenvolve o módulo para ele, sem você trocar de plataforma.',
 }
 
 // Planos — preço por profissional de saúde/mês.
@@ -322,7 +322,7 @@ export const plans = [
 ] as const
 
 export const pricingFootnote =
-  'Plano Solo: R$ 149/mês — 1 profissional, Essencial + WhatsApp. Trial de 14 dias do Pro, sem cartão de crédito.'
+  'Plano Solo: R$ 149/mês para 1 profissional, Essencial + WhatsApp. Trial de 14 dias do Pro, sem cartão de crédito.'
 
 // Módulos à la carte — somados a qualquer plano.
 export const addons = [
@@ -361,7 +361,7 @@ export const addons = [
 export const implementation = {
   eyebrow: 'Implantação',
   title: 'Cobrada pela demanda',
-  desc: 'A implantação não está inclusa na mensalidade: ela é orçada caso a caso, conforme a demanda que a sua clínica precisa que a gente execute. Clínica que só precisa importar a base e começar paga pouco; operação com histórico grande, integrações e fluxo sob medida tem escopo maior. Você recebe o orçamento fechado antes de contratar — sem cobrança surpresa depois.',
+  desc: 'A implantação não está inclusa na mensalidade: ela é orçada caso a caso, conforme a demanda que a sua clínica precisa que a gente execute. Clínica que só precisa importar a base e começar paga pouco; operação com histórico grande, integrações e fluxo sob medida tem escopo maior. Você recebe o orçamento fechado antes de contratar, sem cobrança surpresa depois.',
   items: [
     {
       title: 'O que entra no orçamento',
@@ -369,7 +369,7 @@ export const implementation = {
     },
     {
       title: 'Como definimos o valor',
-      desc: 'Levantamos o escopo na demonstração — volume de dados, sistema de origem, número de unidades e customizações — e enviamos uma proposta fechada.',
+      desc: 'Levantamos o escopo na demonstração (volume de dados, sistema de origem, número de unidades e customizações) e enviamos uma proposta fechada.',
     },
   ],
   footnote: 'Escopo e valor definidos na demonstração, antes da contratação.',
@@ -415,15 +415,15 @@ export const lgpdNotice =
 export const faqs = [
   {
     q: 'Funciona para quem atende sozinho?',
-    a: 'Sim. Médicos solo usam pelo celular e tablet — sem recepção e sem ligar para confirmar consulta.',
+    a: 'Sim. Médicos solo usam pelo celular e tablet, sem recepção e sem ligar para confirmar consulta.',
   },
   {
     q: 'Atende a minha especialidade?',
-    a: 'Sim. O núcleo — agenda, prontuário, prescrição e financeiro — serve qualquer clínica, e você ativa só os módulos que usa. Se a sua especialidade precisa de um fluxo que nenhum sistema tem, desenvolvemos um módulo sob medida sem você trocar de plataforma.',
+    a: 'Sim. O núcleo (agenda, prontuário, prescrição e financeiro) serve qualquer clínica, e você ativa só os módulos que usa. Se a sua especialidade precisa de um fluxo que nenhum sistema tem, desenvolvemos um módulo sob medida sem você trocar de plataforma.',
   },
   {
     q: 'Como é o repasse no fim do mês?',
-    a: 'A ClinniPro consolida o realizado, aplica a comissão vigente e tira um snapshot. Bruto, taxa e líquido por consulta — visíveis ao médico.',
+    a: 'A ClinniPro consolida o realizado, aplica a comissão vigente e tira um snapshot. Bruto, taxa e líquido por consulta, visíveis ao médico.',
   },
   {
     q: 'Meus dados estão seguros? E a LGPD?',
@@ -431,7 +431,7 @@ export const faqs = [
   },
   {
     q: 'Preciso instalar algo?',
-    a: 'Não. Roda no navegador — computador, tablet e celular. Sua equipe só faz login.',
+    a: 'Não. Roda no navegador: computador, tablet e celular. Sua equipe só faz login.',
   },
   {
     q: 'Consigo migrar pacientes do sistema atual?',
@@ -439,6 +439,6 @@ export const faqs = [
   },
   {
     q: 'Quanto custa a implantação?',
-    a: 'A implantação é cobrada à parte da mensalidade e orçada pela demanda a ser realizada — volume de dados a migrar, integrações, treinamento da equipe e customizações. Levantamos o escopo na demonstração e enviamos uma proposta fechada antes da contratação.',
+    a: 'A implantação é cobrada à parte da mensalidade e orçada pela demanda a ser realizada: volume de dados a migrar, integrações, treinamento da equipe e customizações. Levantamos o escopo na demonstração e enviamos uma proposta fechada antes da contratação.',
   },
 ]

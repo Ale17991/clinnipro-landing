@@ -20,9 +20,9 @@ export function PartnerSection() {
               </span>
             </h2>
             <p className="mt-7 max-w-md text-[16px] leading-relaxed text-white/65">
-              Um dia inteiro rodando liso não é sorte — é implantação bem feita,
-              ajuste no fluxo da sua clínica e alguém do outro lado quando algo
-              trava. A ClinniPro não é só a plataforma: é o time.
+              Um dia inteiro rodando liso não é sorte. É implantação bem
+              feita, ajuste no fluxo da sua clínica e alguém do outro lado
+              quando algo trava. A ClinniPro não é só a plataforma: é o time.
             </p>
           </div>
 

@@ -25,7 +25,7 @@ export function CtaFinal() {
               </span>
             </h2>
             <p className="mt-7 max-w-md text-[16px] leading-relaxed text-ink-500">
-              Mostramos a ClinniPro com os dados da sua clínica — convênios,
+              Mostramos a ClinniPro com os dados da sua clínica: convênios,
               profissionais, procedimentos. Sem compromisso e sem cartão.
             </p>
           </div>
