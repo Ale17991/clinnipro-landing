@@ -11,7 +11,19 @@ const slots = [
   { h: '10:30', taken: true },
 ]
 
-export function BookingMockup() {
+// Textos configuráveis para reaproveitar em páginas de especialidade (ex.:
+// campanha de odontologia); o padrão é o da home.
+export function BookingMockup({
+  clinic = 'Clínica Bem-Estar',
+  professional = 'Dra. Helena Martins',
+  procedure = 'Consulta · 30 min',
+  shortName = 'Dra. Helena',
+}: {
+  clinic?: string
+  professional?: string
+  procedure?: string
+  shortName?: string
+} = {}) {
   const [selected, setSelected] = useState('09:30')
   const [confirmed, setConfirmed] = useState(false)
 
@@ -20,15 +32,15 @@ export function BookingMockup() {
       <div className="relative overflow-hidden rounded-xl bg-white shadow-[0_24px_60px_-24px_rgba(20,29,35,0.18),0_0_0_1px_rgba(20,29,35,0.06)]">
         <div className="bg-gradient-to-b from-mist-light to-white p-8">
           <p className="stamp text-[9px] text-ink-500">
-            Clínica Bem-Estar
+            {clinic}
           </p>
           <p className="display mt-2 text-2xl font-medium text-ink">
             Agendar consulta
           </p>
 
           <div className="mt-8 space-y-3 text-[13px]">
-            <Row label="Profissional" value="Dra. Helena Martins" />
-            <Row label="Procedimento" value="Consulta · 30 min" />
+            <Row label="Profissional" value={professional} />
+            <Row label="Procedimento" value={procedure} />
             <Row label="Data" value="Quarta, 28 de maio" />
           </div>
 
@@ -94,7 +106,7 @@ export function BookingMockup() {
         <p className="mt-2 text-[12.5px] leading-snug text-ink">
           Olá Maria! Sua consulta está{' '}
           {confirmed ? 'confirmada' : 'pré-agendada'} para quarta às {selected}{' '}
-          com Dra. Helena.{confirmed ? ' ✓' : ''}
+          com {shortName}.{confirmed ? ' ✓' : ''}
         </p>
       </div>
     </div>

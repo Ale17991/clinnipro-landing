@@ -479,14 +479,13 @@ export const odontoPlans = [
     checkoutUrl: process.env.NEXT_PUBLIC_ASAAS_CHECKOUT_ESSENCIAL_ODONTO ?? '',
     inherits: null,
     features: [
-      'Odontograma anatômico, dentição permanente e decídua',
-      'Marcação por face e por dente',
-      'Achados do odontograma viram orçamento',
-      'Orçamento em PDF com o odontograma desenhado',
-      'Periograma',
-      'Agenda, prontuário e anamnese',
-      'Agendamento online 24h',
-      'Lembretes por e-mail',
+      'Odontograma que vira orçamento em PDF',
+      'Periograma com comparação entre exames',
+      'Agenda e agendamento online 24h',
+      'Lembretes por WhatsApp e e-mail',
+      'Mensagens automáticas: orçamento, retorno, aniversário',
+      'Prontuário, anamnese e modelos de documento',
+      'Prescrição digital (Memed)',
     ],
   },
   {
@@ -501,7 +500,7 @@ export const odontoPlans = [
     features: [
       'Financeiro completo: contas, fluxo de caixa e despesas',
       'Repasse e comissões por dentista',
-      'Lembrete e confirmação por WhatsApp',
+      'Custo de materiais por atendimento',
       'Relatórios e dashboard completos',
       'Suporte prioritário',
     ],
@@ -541,6 +540,14 @@ export const odontoFaqs = [
   {
     q: 'Funciona para consultório solo?',
     a: 'Sim. O Essencial Odonto foi pensado para o consultório com até 2 usuários, como o dentista e a recepção. Roda no navegador, no computador, no tablet e no celular.',
+  },
+  {
+    q: 'O paciente consegue marcar a consulta sozinho?',
+    a: 'Sim. O consultório ganha um link de agendamento online: o paciente escolhe o dentista, o procedimento e o horário livre, sem login e sem ligar. A consulta cai direto na agenda e ele recebe a confirmação por e-mail.',
+  },
+  {
+    q: 'As mensagens pelo WhatsApp saem de qual número?',
+    a: 'Do número do próprio consultório, conectado à ClinniPro. Os lembretes e as mensagens automáticas estão nos dois planos.',
   },
   {
     q: 'Tem fidelidade?',

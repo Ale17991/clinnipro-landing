@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
+import type { ReactNode } from 'react'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { FAQSection } from '@/components/FAQSection'
 import { Icon } from '@/components/Icon'
+import { BookingMockup } from '@/components/BookingMockup'
 import { OdontoBudgetMockup } from '@/components/odonto/OdontoBudgetMockup'
 import { LeadWelcome } from '@/components/odonto/LeadWelcome'
 import {
@@ -15,9 +17,9 @@ import {
   whatsappLink,
 } from '@/lib/site'
 
-const title = 'ClinniPro para odontologia · Odontograma que vira orçamento'
+const title = 'ClinniPro para odontologia · O consultório inteiro num sistema só'
 const description =
-  'Marque no odontograma e o orçamento já sai pronto, em PDF, com o dente desenhado. Agenda, prontuário e financeiro do consultório odontológico. A partir de R$ 187/mês, sem fidelidade e com implantação grátis.'
+  'Agendamento online, lembretes e mensagens automáticas pelo WhatsApp, prontuário, odontograma que vira orçamento, periograma e financeiro. A partir de R$ 187/mês, sem fidelidade e com implantação grátis.'
 
 export const metadata: Metadata = {
   title,
@@ -35,11 +37,62 @@ export const metadata: Metadata = {
 }
 
 const nav = [
+  { label: 'Agenda', href: '#agenda' },
+  { label: 'Mensagens', href: '#mensagens' },
   { label: 'Odontograma', href: '#odontograma' },
-  { label: 'Recursos', href: '#recursos' },
+  { label: 'Financeiro', href: '#financeiro' },
   { label: 'Planos', href: '#planos' },
-  { label: 'Implantação', href: '#implantacao' },
-  { label: 'Perguntas', href: '#faq' },
+]
+
+// Atalhos logo abaixo do topo: o que o consultório encontra na página.
+const tour = [
+  { icon: 'globe', label: 'Agendamento online', href: '#agenda' },
+  { icon: 'bell', label: 'Lembretes e mensagens', href: '#mensagens' },
+  { icon: 'tooth', label: 'Odontograma e orçamento', href: '#odontograma' },
+  { icon: 'cardiogram', label: 'Periograma', href: '#periograma' },
+  { icon: 'clipboard', label: 'Prontuário', href: '#prontuario' },
+  { icon: 'wallet', label: 'Financeiro', href: '#financeiro' },
+]
+
+type Item = { icon: string; title: string; desc: string }
+
+const agendaItems: Item[] = [
+  {
+    icon: 'globe',
+    title: 'Agendamento online 24h',
+    desc: 'Link próprio do consultório. O paciente escolhe o dentista, o procedimento e o horário livre, sem login e sem ligar.',
+  },
+  {
+    icon: 'check',
+    title: 'Confirma e cancela sozinho',
+    desc: 'O paciente recebe a confirmação por e-mail, com o convite para a agenda do celular, e cancela pelo link se precisar.',
+  },
+  {
+    icon: 'settings',
+    title: 'Você decide o que aparece',
+    desc: 'Escolha quais dentistas e procedimentos entram no agendamento online.',
+  },
+  {
+    icon: 'calendar',
+    title: 'Dia, semana e mês',
+    desc: 'Filtro por dentista, bloqueio de horários, encaixes e arrastar para remarcar.',
+  },
+  {
+    icon: 'link',
+    title: 'Google Agenda',
+    desc: 'Sincroniza nos dois sentidos com a agenda pessoal do dentista.',
+  },
+]
+
+const automations = [
+  { when: 'Antes da consulta', what: 'Lembrete com dia, hora e orientação de preparo.' },
+  { when: 'Orçamento sem resposta', what: 'Retoma a conversa sobre o tratamento depois de N dias.' },
+  { when: 'Etapa sem data marcada', what: 'Convida o paciente a agendar a próxima sessão.' },
+  { when: 'Sem retorno há N meses', what: 'Chama o paciente de volta para a revisão.' },
+  { when: 'Paciente não compareceu', what: 'Convida a remarcar o horário perdido.' },
+  { when: 'Aniversário do paciente', what: 'Uma mensagem por ano, no dia que você escolher.' },
+  { when: 'Parcela a vencer', what: 'Um lembrete gentil antes do vencimento, não uma cobrança.' },
+  { when: 'Depois do atendimento', what: 'Pergunta como o paciente está.' },
 ]
 
 const flow = [
@@ -60,62 +113,84 @@ const flow = [
   },
 ]
 
-const odontoFeatures = [
+const perioItems: Item[] = [
   {
     icon: 'tooth',
-    title: 'Odontograma anatômico',
-    desc: 'Dente desenhado com coroa e raiz, marcação por face e por dente, dentição permanente e decídua.',
-  },
-  {
-    icon: 'check',
-    title: 'Dente tratado em verde',
-    desc: 'Concluiu o plano daquele dente? Ele fica verde-claro sozinho. Se preferir, marque à mão.',
-  },
-  {
-    icon: 'receipt',
-    title: 'Do odontograma ao orçamento',
-    desc: 'Os achados viram itens do plano de tratamento, cada um com o valor combinado com o paciente.',
-  },
-  {
-    icon: 'file',
-    title: 'Orçamento em PDF',
-    desc: 'Com o odontograma desenhado, os dentes do orçamento destacados e as linhas de assinatura do paciente.',
+    title: 'Seis sítios por dente',
+    desc: 'Profundidade de sondagem e recessão em cada sítio, vestibular e lingual ou palatina.',
   },
   {
     icon: 'cardiogram',
-    title: 'Periograma',
-    desc: 'O exame periodontal registrado no prontuário do paciente, junto com o resto da história clínica.',
+    title: 'Nível de inserção calculado',
+    desc: 'O sistema calcula o nível de inserção a partir da sondagem e da recessão, sem conta à mão.',
+  },
+  {
+    icon: 'heart',
+    title: 'Sangramento e bolsas',
+    desc: 'Sangramento à sondagem por sítio, com o percentual de sítios que sangram e de bolsas de 4 mm ou mais.',
+  },
+  {
+    icon: 'trending',
+    title: 'Comparação entre exames',
+    desc: 'Exames datados lado a lado, com a diferença sítio a sítio para acompanhar a evolução.',
   },
 ]
 
-const coreFeatures = [
-  { icon: 'calendar', title: 'Agenda' },
-  { icon: 'clipboard', title: 'Prontuário' },
-  { icon: 'wallet', title: 'Financeiro' },
-  { icon: 'bell', title: 'Lembretes' },
-  { icon: 'globe', title: 'Agendamento online' },
+const prontuarioItems: Item[] = [
+  {
+    icon: 'clipboard',
+    title: 'Timeline única do paciente',
+    desc: 'Consultas, evolução, alergias e diagnósticos numa linha do tempo só, aberta na cadeira.',
+  },
+  {
+    icon: 'scroll',
+    title: 'Anamnese com modelos',
+    desc: 'Monte a anamnese do consultório uma vez e reaproveite em todo paciente novo.',
+  },
+  {
+    icon: 'file',
+    title: 'Atestados, declarações e termos',
+    desc: 'Modelos de documento que já saem com os dados do paciente e a identidade visual do consultório.',
+  },
+  {
+    icon: 'receipt',
+    title: 'Prescrição digital',
+    desc: 'Receita assinada digitalmente pela Memed, enviada ao paciente.',
+  },
+]
+
+const financeItems: Item[] = [
+  {
+    icon: 'wallet',
+    title: 'Contas a pagar e a receber',
+    desc: 'Parcelamento, despesas e impostos do consultório no mesmo lugar.',
+  },
+  {
+    icon: 'trending',
+    title: 'Fluxo de caixa projetado',
+    desc: 'O que entra e o que sai nos próximos meses, antes de virar surpresa.',
+  },
+  {
+    icon: 'users',
+    title: 'Repasse por dentista',
+    desc: 'Comissão por procedimento, no modelo comissionado, fixo ou liberal, com fechamento do mês.',
+  },
+  {
+    icon: 'tag',
+    title: 'Custo de materiais',
+    desc: 'O custo dos insumos usados em cada atendimento, para ver a margem real do procedimento.',
+  },
+  {
+    icon: 'search',
+    title: 'Relatórios e dashboard',
+    desc: 'Por dentista e por mês, com exportação em PDF e Excel.',
+  },
 ]
 
 function planHref(plan: (typeof odontoPlans)[number]) {
   return (
     plan.checkoutUrl ||
     whatsappLink(`Olá! Quero assinar o plano ${plan.name} da ClinniPro.`)
-  )
-}
-
-function TermsRow({ className = '' }: { className?: string }) {
-  return (
-    <ul className={`flex flex-wrap gap-2 ${className}`}>
-      {odontoPlanTerms.map((t) => (
-        <li
-          key={t}
-          className="stamp inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-2 text-[9px] text-ink-700 ring-1 ring-ink/[0.08]"
-        >
-          <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-          {t}
-        </li>
-      ))}
-    </ul>
   )
 }
 
@@ -128,28 +203,72 @@ export default function OdontoAssinarPage({
   // página abre com o reconhecimento e os planos, sem o topo de apresentação.
   const fromForm = searchParams.origem === 'demonstracao'
 
+  const features = (
+    <>
+      <AgendaSection />
+      <MessagesSection />
+      <OdontogramSection />
+      <FeatureSection
+        id="periograma"
+        tone="white"
+        eyebrow="Periograma"
+        title={
+          <>
+            O periograma completo,{' '}
+            <span className="text-accent-dark">com a evolução do paciente</span>.
+          </>
+        }
+        desc="O exame periodontal fica no prontuário, datado, e cada exame novo se compara com o anterior."
+        items={perioItems}
+      />
+      <FeatureSection
+        id="prontuario"
+        tone="paper"
+        eyebrow="Prontuário"
+        title={
+          <>
+            A história do paciente{' '}
+            <span className="text-accent-dark">aberta na cadeira</span>.
+          </>
+        }
+        desc="Odontograma, periograma, orçamentos e evolução no mesmo prontuário. Ninguém perde os primeiros minutos da consulta procurando papel."
+        items={prontuarioItems}
+      />
+      <FeatureSection
+        id="financeiro"
+        tone="deep"
+        eyebrow="Financeiro"
+        badge="No Pro Odonto"
+        title={
+          <>
+            O financeiro do consultório,{' '}
+            <span className="text-accent-dark">sem planilha paralela</span>.
+          </>
+        }
+        desc="O orçamento aceito vira sessão na agenda, e a sessão realizada entra no caixa e no repasse do dentista. Você acompanha o mês sem juntar números de três lugares."
+        items={financeItems}
+      />
+    </>
+  )
+
   return (
     <>
       <Header items={nav} logoHref="/" />
       <main id="top">
         {fromForm ? (
-          <section className="bg-paper pb-4 pt-14 sm:pt-20">
-            <div className="mx-auto max-w-content px-6 sm:px-10">
-              <LeadWelcome />
-            </div>
-          </section>
-        ) : (
-          <Hero />
-        )}
-
-        {fromForm ? (
           <>
+            <section className="bg-paper pb-4 pt-14 sm:pt-20">
+              <div className="mx-auto max-w-content px-6 sm:px-10">
+                <LeadWelcome />
+              </div>
+            </section>
             <Plans compact />
-            <OdontogramSection />
+            {features}
           </>
         ) : (
           <>
-            <OdontogramSection />
+            <Hero />
+            {features}
             <Plans />
           </>
         )}
@@ -170,23 +289,39 @@ export default function OdontoAssinarPage({
   )
 }
 
+function TermsRow({ className = '' }: { className?: string }) {
+  return (
+    <ul className={`flex flex-wrap gap-2 ${className}`}>
+      {odontoPlanTerms.map((t) => (
+        <li
+          key={t}
+          className="stamp inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-2 text-[9px] text-ink-700 ring-1 ring-ink/[0.08]"
+        >
+          <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+          {t}
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-paper pb-20 pt-14 sm:pb-28 sm:pt-20">
+    <section className="relative overflow-hidden bg-paper pb-16 pt-14 sm:pb-20 sm:pt-20">
       <div aria-hidden className="time-grid pointer-events-none absolute inset-0 opacity-60" />
       <div className="relative mx-auto grid max-w-content gap-14 px-6 sm:px-10 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-20">
         <div>
           <p className="stamp text-[9.5px] text-accent-dark">ClinniPro para odontologia</p>
           <h1 className="display mt-6 text-[2.4rem] font-medium leading-[1.02] text-ink sm:text-[3.4rem]">
-            Clicou no dente,
+            O consultório inteiro,
             <br />
-            <span className="font-serif italic text-navy">virou orçamento.</span>
+            <span className="font-serif italic text-navy">do odontograma ao caixa.</span>
           </h1>
           <p className="mt-6 max-w-lg text-[16.5px] leading-relaxed text-ink-500">
-            O odontograma da ClinniPro desenha o dente com coroa e raiz e leva
-            o que você marcou direto para o orçamento do paciente, em PDF. Com
-            agenda, prontuário e financeiro do consultório no mesmo lugar, e a
-            nossa equipe do seu lado.
+            O paciente marca sozinho pelo agendamento online, recebe o lembrete
+            no WhatsApp e chega com a história aberta no prontuário. Na
+            cadeira, o odontograma vira orçamento; depois, a sessão entra no
+            financeiro. E a nossa equipe fica do seu lado.
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -215,28 +350,222 @@ function Hero() {
 
         <OdontoBudgetMockup />
       </div>
+
+      <nav
+        aria-label="O que tem na ClinniPro para odontologia"
+        className="relative mx-auto mt-16 max-w-content px-6 sm:px-10"
+      >
+        <ul className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
+          {tour.map((t) => (
+            <li key={t.href}>
+              <a
+                href={t.href}
+                className="flex h-full items-center gap-2.5 rounded-xl bg-white px-3.5 py-3 text-[13px] font-medium text-ink ring-1 ring-ink/[0.07] transition hover:ring-accent/40"
+              >
+                <Icon name={t.icon} className="h-4 w-4 shrink-0 text-accent-dark" />
+                {t.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </section>
+  )
+}
+
+const tones = {
+  paper: 'bg-paper',
+  deep: 'bg-paper-deep',
+  white: 'bg-white',
+} as const
+
+function SectionHeading({
+  eyebrow,
+  badge,
+  title,
+  desc,
+}: {
+  eyebrow: string
+  badge?: string
+  title: ReactNode
+  desc: string
+}) {
+  return (
+    <div className="max-w-2xl">
+      <div className="flex flex-wrap items-center gap-3">
+        <p className="stamp text-[9.5px] text-ink-500">{eyebrow}</p>
+        {badge && (
+          <span className="stamp rounded-full bg-navy px-2.5 py-1 text-[8.5px] text-white">
+            {badge}
+          </span>
+        )}
+      </div>
+      <h2 className="display mt-6 text-[2rem] font-medium leading-[1.06] text-ink sm:text-[2.6rem]">
+        {title}
+      </h2>
+      <p className="mt-6 text-[16px] leading-relaxed text-ink-500">{desc}</p>
+    </div>
+  )
+}
+
+function ItemGrid({ items, card = 'bg-white' }: { items: Item[]; card?: string }) {
+  return (
+    <div className="grid gap-4 sm:grid-cols-2">
+      {items.map((f) => (
+        <div key={f.title} className={`rounded-2xl p-6 ring-1 ring-ink/[0.06] ${card}`}>
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-navy text-white">
+            <Icon name={f.icon} className="h-5 w-5" />
+          </div>
+          <h3 className="mt-5 text-[16px] font-semibold text-ink">{f.title}</h3>
+          <p className="mt-2 text-[14px] leading-relaxed text-ink-500">{f.desc}</p>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function FeatureSection({
+  id,
+  tone,
+  eyebrow,
+  badge,
+  title,
+  desc,
+  items,
+}: {
+  id: string
+  tone: keyof typeof tones
+  eyebrow: string
+  badge?: string
+  title: ReactNode
+  desc: string
+  items: Item[]
+}) {
+  return (
+    <section id={id} className={`scroll-mt-16 py-20 sm:py-28 ${tones[tone]}`}>
+      <div className="mx-auto grid max-w-content gap-12 px-6 sm:px-10 lg:grid-cols-[1fr_1.25fr] lg:gap-20">
+        <div className="lg:sticky lg:top-28 lg:self-start">
+          <SectionHeading eyebrow={eyebrow} badge={badge} title={title} desc={desc} />
+        </div>
+        <ItemGrid items={items} card={tone === 'white' ? 'bg-paper' : 'bg-white'} />
+      </div>
+    </section>
+  )
+}
+
+function AgendaSection() {
+  return (
+    <section id="agenda" className="scroll-mt-16 bg-paper-deep py-20 sm:py-28">
+      <div className="mx-auto max-w-content px-6 sm:px-10">
+        <div className="grid gap-14 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-20">
+          <SectionHeading
+            eyebrow="Agenda e agendamento online"
+            title={
+              <>
+                A agenda enche{' '}
+                <span className="text-accent-dark">sem ocupar a recepção</span>.
+              </>
+            }
+            desc="O paciente marca pelo link do consultório, a qualquer hora, e a consulta cai direto na agenda. Sem ligação, sem troca de mensagens para achar horário e sem conflito de agenda."
+          />
+          <div className="pb-6 sm:pb-10">
+            <BookingMockup
+              clinic="Consultório Sorriso"
+              professional="Dr. Rafael Costa"
+              procedure="Avaliação · 30 min"
+              shortName="Dr. Rafael"
+            />
+          </div>
+        </div>
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          {agendaItems.map((f) => (
+            <div key={f.title} className="rounded-2xl bg-white p-6 ring-1 ring-ink/[0.06]">
+              <Icon name={f.icon} className="h-5 w-5 text-accent-dark" />
+              <h3 className="mt-4 text-[15px] font-semibold text-ink">{f.title}</h3>
+              <p className="mt-2 text-[13.5px] leading-relaxed text-ink-500">{f.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function MessagesSection() {
+  return (
+    <section id="mensagens" className="scroll-mt-16 bg-navy py-20 text-white sm:py-28">
+      <div className="mx-auto grid max-w-content gap-14 px-6 sm:px-10 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
+        <div className="lg:sticky lg:top-28 lg:self-start">
+          <div className="flex flex-wrap items-center gap-3">
+            <p className="stamp text-[9.5px] text-white/60">Lembretes e mensagens automáticas</p>
+            <span className="stamp rounded-full bg-accent px-2.5 py-1 text-[8.5px] text-white">
+              Nos dois planos
+            </span>
+          </div>
+          <h2 className="display mt-6 text-[2rem] font-medium leading-[1.06] sm:text-[2.6rem]">
+            Mensagens que saem sozinhas,{' '}
+            <span className="font-serif italic text-accent-light">na hora certa</span>.
+          </h2>
+          <p className="mt-6 max-w-md text-[16px] leading-relaxed text-white/70">
+            Pelo WhatsApp do próprio consultório, e por e-mail. O lembrete
+            antes da consulta diminui as faltas, e você monta as outras
+            mensagens: escolhe quando cada uma sai e o que ela diz.
+          </p>
+          <ul className="mt-8 space-y-3 text-[14.5px] text-white/85">
+            {[
+              'Sai do número do consultório, com o seu texto',
+              'Você acompanha o que foi entregue e lido',
+              'O paciente pode pedir para não receber',
+            ].map((t) => (
+              <li key={t} className="flex items-start gap-3">
+                <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-accent-light" />
+                {t}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="rounded-2xl bg-white p-2 text-ink shadow-[0_30px_80px_-30px_rgba(0,0,0,0.45)]">
+          <div className="flex items-center justify-between px-4 pb-3 pt-4">
+            <p className="stamp text-[9px] text-ink-500">Automações do consultório</p>
+            <span className="stamp inline-flex items-center gap-1.5 text-[8.5px] text-ink-500">
+              <Icon name="whatsapp" className="h-3.5 w-3.5 text-[#25D366]" />
+              WhatsApp
+            </span>
+          </div>
+          <ul className="divide-y divide-ink/[0.06]">
+            {automations.map((a) => (
+              <li key={a.when} className="flex items-start gap-3 px-4 py-3.5">
+                <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-accent" />
+                <div>
+                  <p className="text-[13.5px] font-semibold text-ink">{a.when}</p>
+                  <p className="text-[13px] leading-snug text-ink-500">{a.what}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </section>
   )
 }
 
 function OdontogramSection() {
   return (
-    <section id="odontograma" className="bg-paper-deep py-24 sm:py-32">
+    <section id="odontograma" className="scroll-mt-16 bg-paper py-20 sm:py-28">
       <div className="mx-auto max-w-content px-6 sm:px-10">
-        <div className="max-w-2xl">
-          <p className="stamp text-[9.5px] text-ink-500">Odontograma com orçamento integrado</p>
-          <h2 className="display mt-6 text-[2rem] font-medium leading-[1.06] text-ink sm:text-[2.7rem]">
-            O dente que você marcou é o que{' '}
-            <span className="text-accent-dark">entra no orçamento</span>.
-          </h2>
-          <p className="mt-6 text-[16px] leading-relaxed text-ink-500">
-            Nada de sair do desenho para digitar o número do dente em outra
-            tela. A marcação do odontograma já é o começo do plano de
-            tratamento, e o orçamento sai dela.
-          </p>
-        </div>
+        <SectionHeading
+          eyebrow="Odontograma com orçamento integrado"
+          title={
+            <>
+              O dente que você marcou é o que{' '}
+              <span className="text-accent-dark">entra no orçamento</span>.
+            </>
+          }
+          desc="Nada de sair do desenho para digitar o número do dente em outra tela. A marcação do odontograma já é o começo do plano de tratamento, e o orçamento sai dela."
+        />
 
-        <ol className="mt-14 grid gap-4 md:grid-cols-3 md:gap-6">
+        <ol className="mt-12 grid gap-4 md:grid-cols-3 md:gap-6">
           {flow.map((f) => (
             <li key={f.step} className="rounded-2xl bg-white p-6 ring-1 ring-ink/[0.06] sm:p-7">
               <p className="stamp text-[9px] text-accent-dark">{f.step}</p>
@@ -246,30 +575,22 @@ function OdontogramSection() {
           ))}
         </ol>
 
-        <div id="recursos" className="mt-20 scroll-mt-24">
-          <p className="stamp text-[9.5px] text-ink-500">O que vem para a odontologia</p>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {odontoFeatures.map((f) => (
-              <div key={f.title} className="rounded-2xl border border-paper-line bg-paper p-6">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-navy text-white">
-                  <Icon name={f.icon} className="h-5 w-5" />
-                </div>
-                <h3 className="mt-5 text-[16px] font-semibold text-ink">{f.title}</h3>
-                <p className="mt-2 text-[14px] leading-relaxed text-ink-500">{f.desc}</p>
-              </div>
-            ))}
-
-            <div className="rounded-2xl bg-navy p-6 text-white">
-              <p className="stamp text-[9px] text-white/60">E o núcleo de toda clínica</p>
-              <ul className="mt-5 space-y-3">
-                {coreFeatures.map((c) => (
-                  <li key={c.title} className="flex items-center gap-3 text-[14.5px]">
-                    <Icon name={c.icon} className="h-4 w-4 text-accent-light" />
-                    {c.title}
-                  </li>
-                ))}
-              </ul>
-            </div>
+        <div className="mt-4 grid gap-4 md:grid-cols-2 md:gap-6">
+          <div className="flex items-start gap-4 rounded-2xl bg-white p-6 ring-1 ring-ink/[0.06]">
+            <span className="mt-0.5 h-5 w-5 shrink-0 rounded-md bg-[#bbf7d0] ring-1 ring-[#4d9468]" />
+            <p className="text-[14.5px] leading-relaxed text-ink-500">
+              <strong className="font-semibold text-ink">Dente tratado em verde.</strong>{' '}
+              Concluiu o plano daquele dente? Ele fica verde-claro sozinho. Se
+              preferir, marque à mão.
+            </p>
+          </div>
+          <div className="flex items-start gap-4 rounded-2xl bg-white p-6 ring-1 ring-ink/[0.06]">
+            <Icon name="calendar" className="mt-0.5 h-5 w-5 shrink-0 text-accent-dark" />
+            <p className="text-[14.5px] leading-relaxed text-ink-500">
+              <strong className="font-semibold text-ink">Depois do sim.</strong>{' '}
+              Orçamento aceito, cada etapa vira consulta na agenda, e a sessão
+              realizada entra no caixa e no repasse.
+            </p>
           </div>
         </div>
       </div>
@@ -283,19 +604,21 @@ function Plans({ compact = false }: { compact?: boolean }) {
   return (
     <section
       id="planos"
-      className={`scroll-mt-16 bg-paper pb-20 sm:pb-28 ${compact ? 'pt-8 sm:pt-12' : 'pt-20 sm:pt-28'}`}
+      className={`scroll-mt-16 bg-paper pb-20 sm:pb-28 ${compact ? 'pt-8 sm:pt-12' : 'border-t border-paper-line pt-20 sm:pt-28'}`}
     >
       <div className="mx-auto max-w-content px-6 sm:px-10">
         <div className="max-w-2xl">
           <p className="stamp text-[9.5px] text-ink-500">Planos para odontologia</p>
           <h2 className="display mt-6 text-[2rem] font-medium leading-[1.06] text-ink sm:text-[2.7rem]">
             Dois planos,{' '}
-            <span className="text-accent-dark">odontograma nos dois</span>.
+            <span className="text-accent-dark">o consultório inteiro nos dois</span>.
           </h2>
           <p className="mt-6 text-[15px] leading-relaxed text-ink-500">
-            O odontograma com orçamento integrado e o periograma estão no
-            Essencial Odonto e no Pro Odonto. Mensal, sem fidelidade, e a
-            implantação é por nossa conta.
+            Agendamento online, lembretes e mensagens pelo WhatsApp,
+            prontuário, odontograma com orçamento e periograma estão no
+            Essencial Odonto e no Pro Odonto. O Pro soma o financeiro completo
+            e mais usuários. Mensal, sem fidelidade, e a implantação é por
+            nossa conta.
           </p>
         </div>
 
@@ -311,7 +634,7 @@ function Plans({ compact = false }: { compact?: boolean }) {
             >
               {plan.featured && (
                 <span className="stamp absolute -top-3 left-7 rounded-full bg-accent px-3 py-1 text-[9px] font-medium text-white sm:left-8">
-                  Para a equipe
+                  Com financeiro
                 </span>
               )}
               <h3 className={`stamp text-[10.5px] font-medium ${plan.featured ? 'text-white/70' : 'text-ink-500'}`}>
