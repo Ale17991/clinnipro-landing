@@ -1,9 +1,16 @@
 'use client'
 
 import { useState, type FormEvent } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { leadSchema, type LeadInput } from '@/lib/lead-schema'
-import { clinicSizes, clinicTypes, lgpdNotice, privacyEmail } from '@/lib/site'
+import {
+  ODONTO_LEAD_KEY,
+  ODONTO_PATH,
+  clinicSizes,
+  clinicTypes,
+  lgpdNotice,
+  privacyEmail,
+} from '@/lib/site'
 
 type FieldErrors = Partial<Record<keyof LeadInput, string>>
 
@@ -23,8 +30,12 @@ const steps = [
   { title: 'Como falar com você', fields: ['contactName', 'phone', 'email'] },
 ] as const
 
+// Parâmetros de atribuição que seguem junto quando o lead é redirecionado.
+const TRACKING_PARAMS = /^(utm_[a-z]+|gclid|fbclid)$/
+
 export function LeadForm() {
   const params = useSearchParams()
+  const router = useRouter()
   const [step, setStep] = useState(0)
   const [values, setValues] = useState(initial)
   const [errors, setErrors] = useState<FieldErrors>({})
@@ -116,6 +127,29 @@ export function LeadForm() {
           json?.error ?? 'Não conseguimos enviar agora. Tente novamente.',
         )
         setState('error')
+        return
+      }
+      // Lead de odontologia já gravado: segue para a página de assinatura da
+      // campanha em vez da tela "Recebido". Na URL vão só a origem e os
+      // parâmetros de atribuição; o primeiro nome (para a saudação) fica no
+      // sessionStorage, nunca na URL.
+      if (parsed.data.clinicType === 'Odontologia') {
+        try {
+          sessionStorage.setItem(
+            ODONTO_LEAD_KEY,
+            JSON.stringify({
+              firstName: parsed.data.contactName.split(/\s+/)[0],
+              at: Date.now(),
+            }),
+          )
+        } catch {
+          // Storage bloqueado: a página de assinatura trata a ausência.
+        }
+        const query = new URLSearchParams({ origem: 'demonstracao' })
+        params.forEach((value, key) => {
+          if (TRACKING_PARAMS.test(key)) query.set(key, value)
+        })
+        router.push(`${ODONTO_PATH}?${query.toString()}`)
         return
       }
       setState('success')

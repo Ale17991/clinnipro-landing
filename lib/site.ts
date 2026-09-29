@@ -442,3 +442,116 @@ export const faqs = [
     a: 'A implantação é cobrada à parte da mensalidade e orçada pela demanda a ser realizada: volume de dados a migrar, integrações, treinamento da equipe e customizações. Levantamos o escopo na demonstração e enviamos uma proposta fechada antes da contratação.',
   },
 ]
+
+// ─── Campanha de odontologia (/odontologia/assinar) ─────────────────────────
+
+export const ODONTO_PATH = '/odontologia/assinar'
+
+// Chave do sessionStorage que o formulário de demonstração grava antes de
+// redirecionar um lead de odontologia. Guarda só o primeiro nome, para a
+// saudação; nada de e-mail ou telefone.
+export const ODONTO_LEAD_KEY = 'clinnipro:odonto-lead'
+
+export function whatsappLink(message: string) {
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
+}
+
+export const odontoWhatsappUrl = whatsappLink(
+  'Olá! Vim pela campanha de odontologia da ClinniPro e quero tirar uma dúvida.',
+)
+
+// Planos da campanha. Preço fechado por mês, sem fidelidade e sem taxa de
+// implantação.
+//
+// Checkout no Asaas: cada plano lê o link do produto de uma variável
+// NEXT_PUBLIC_ASAAS_CHECKOUT_* (ver .env.example). Precisa ser lida com o nome
+// literal para o Next embutir no bundle. Enquanto a variável estiver vazia, o
+// botão abre o WhatsApp com o nome do plano: a página nunca fica com botão
+// morto e nenhuma cobrança é criada sem o link oficial.
+export const odontoPlans = [
+  {
+    id: 'essencial-odonto',
+    name: 'Essencial Odonto',
+    price: 187,
+    users: 'Até 2 usuários',
+    tagline: 'Consultório odontológico',
+    featured: false,
+    checkoutUrl: process.env.NEXT_PUBLIC_ASAAS_CHECKOUT_ESSENCIAL_ODONTO ?? '',
+    inherits: null,
+    features: [
+      'Odontograma anatômico, dentição permanente e decídua',
+      'Marcação por face e por dente',
+      'Achados do odontograma viram orçamento',
+      'Orçamento em PDF com o odontograma desenhado',
+      'Periograma',
+      'Agenda, prontuário e anamnese',
+      'Agendamento online 24h',
+      'Lembretes por e-mail',
+    ],
+  },
+  {
+    id: 'pro-odonto',
+    name: 'Pro Odonto',
+    price: 687,
+    users: 'Até 4 usuários',
+    tagline: 'Clínica odontológica em crescimento',
+    featured: true,
+    checkoutUrl: process.env.NEXT_PUBLIC_ASAAS_CHECKOUT_PRO_ODONTO ?? '',
+    inherits: 'Tudo do Essencial Odonto, mais:',
+    features: [
+      'Financeiro completo: contas, fluxo de caixa e despesas',
+      'Repasse e comissões por dentista',
+      'Lembrete e confirmação por WhatsApp',
+      'Relatórios e dashboard completos',
+      'Suporte prioritário',
+    ],
+  },
+] as const
+
+export const odontoPlanTerms = [
+  'Sem fidelidade',
+  'Implantação grátis',
+  'Preço fechado por mês',
+] as const
+
+export const odontoImplementation = {
+  title: 'A implantação é por nossa conta.',
+  desc: 'Nos planos de odontologia a implantação não é cobrada. A equipe da ClinniPro trabalha junto com a sua para o consultório começar a usar o sistema sem parar o atendimento.',
+  items: [
+    {
+      title: 'Seus pacientes no sistema',
+      desc: 'Importamos pacientes, profissionais e agenda futura a partir de planilha ou da exportação do sistema atual.',
+    },
+    {
+      title: 'Configurado para o seu consultório',
+      desc: 'Agenda, dentistas, procedimentos e valores ficam prontos antes do primeiro paciente.',
+    },
+    {
+      title: 'Equipe treinada',
+      desc: 'Mostramos o dia a dia para quem atende e para a recepção, com gente de verdade do outro lado.',
+    },
+  ],
+} as const
+
+export const odontoFaqs = [
+  {
+    q: 'Consigo trazer meus pacientes do sistema atual?',
+    a: 'Sim. Nossa equipe importa pacientes, profissionais e agenda futura a partir de planilha ou da exportação do sistema que você usa hoje. A migração faz parte da implantação, que nos planos de odontologia é grátis.',
+  },
+  {
+    q: 'Funciona para consultório solo?',
+    a: 'Sim. O Essencial Odonto foi pensado para o consultório com até 2 usuários, como o dentista e a recepção. Roda no navegador, no computador, no tablet e no celular.',
+  },
+  {
+    q: 'Tem fidelidade?',
+    a: 'Não. Os dois planos são mensais e sem fidelidade.',
+  },
+  {
+    q: 'Meus dados e os dos pacientes estão seguros? E a LGPD?',
+    a: faqs.find((f) => f.q.startsWith('Meus dados'))!.a,
+  },
+  {
+    q: 'Preciso instalar algo?',
+    a: faqs.find((f) => f.q.startsWith('Preciso instalar'))!.a,
+  },
+] as const

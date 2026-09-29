@@ -1,16 +1,18 @@
 import { Logo } from './Logo'
 import { site, whatsappUrl } from '@/lib/site'
 
+// Âncoras com "/" na frente: na home rolam a página, em outra rota voltam
+// para a home na seção certa.
 const links: { label: string; href: string; external?: boolean }[][] = [
   [
-    { label: 'Um dia na clínica', href: '#sistema' },
-    { label: 'Prontuário', href: '#prontuario' },
-    { label: 'Financeiro', href: '#financeiro' },
-    { label: 'Agendamento online', href: '#agendamento' },
+    { label: 'Um dia na clínica', href: '/#sistema' },
+    { label: 'Prontuário', href: '/#prontuario' },
+    { label: 'Financeiro', href: '/#financeiro' },
+    { label: 'Agendamento online', href: '/#agendamento' },
   ],
   [
-    { label: 'Segurança', href: '#seguranca' },
-    { label: 'Perguntas', href: '#faq' },
+    { label: 'Segurança', href: '/#seguranca' },
+    { label: 'Perguntas', href: '/#faq' },
     // A política mora no APP, não aqui: é o app que pede os dados, e o domínio
     // dele é o mesmo do OAuth do Google. Uma cópia na landing seria uma segunda
     // versão do mesmo documento, condenada a divergir.

@@ -1,6 +1,13 @@
+import type { ReactNode } from 'react'
 import { faqs } from '@/lib/site'
 
-export function FAQSection() {
+export function FAQSection({
+  items = faqs,
+  title,
+}: {
+  items?: readonly { q: string; a: string }[]
+  title?: ReactNode
+} = {}) {
   return (
     <section id="faq" className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-content px-6 sm:px-10">
@@ -8,13 +15,17 @@ export function FAQSection() {
           <div className="lg:sticky lg:top-32 lg:self-start">
             <p className="stamp text-[9.5px] text-ink-500">Antes de perguntar</p>
             <h2 className="display mt-6 text-[2rem] font-medium leading-[1.06] text-ink sm:text-[2.6rem]">
-              O que toda clínica{' '}
-              <span className="text-accent-dark">pergunta</span>.
+              {title ?? (
+                <>
+                  O que toda clínica{' '}
+                  <span className="text-accent-dark">pergunta</span>.
+                </>
+              )}
             </h2>
           </div>
 
           <div className="divide-y divide-ink/10">
-            {faqs.map((f, i) => (
+            {items.map((f, i) => (
               <details
                 key={f.q}
                 open={i === 0}
